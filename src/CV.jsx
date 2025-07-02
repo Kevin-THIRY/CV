@@ -5,7 +5,7 @@ export default function CV() {
     <div className="p-6 max-w-4xl mx-auto space-y-8">
       <header className="text-center">
         <h1 className="text-4xl font-bold">Kevin Thiry</h1>
-        <p className="text-xl text-gray-600">Back-End Engineer | Robotics & Game Dev</p>
+        <p className="text-xl text-gray-600">Back-End Engineer | Robotics & Game Dev & the best</p>
         <p className="mt-2 text-blue-600 underline">
           <a href="https://github.com/Kevin-THIRY/WarOfTime" target="_blank">GitHub - WarOfTime</a>
         </p>
