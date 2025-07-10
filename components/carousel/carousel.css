@@ -1,0 +1,48 @@
+.carousel-container {
+  width: 100%;
+  overflow: hidden;
+  background: #f5f7fa; /* gris clair neutre */
+  padding: 30px 0;
+  user-select: none;
+}
+
+.carousel-track {
+  display: flex;
+  will-change: transform;
+  transition: none;
+}
+
+.carousel-item {
+  flex: 0 0 auto;
+  padding: 0 6px;
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 40px; /* pill shape */
+  overflow: hidden;
+  background: rgba(255 255 255 / 0.4);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.carousel-item:hover {
+  transform: scale(1.15) translateY(-8px);
+  box-shadow: 0 12px 30px rgb(0 0 0 / 0.15);
+  background: rgba(255 255 255 / 0.65);
+}
+
+.carousel-item img {
+  display: block;
+  width: 100px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 40px;
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+  transition: filter 0.35s ease;
+}
+
+.carousel-item:hover img {
+  filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.18));
+}

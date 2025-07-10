@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Carousel from '../carousel/carousel';
 import './onglet.css';
 
 const Onglet1 = () => {
@@ -127,6 +128,7 @@ const Onglet1 = () => {
           </div>
         ))}
       </div>
+      <Carousel />
       <div className="onglet-content">
         {renderContent()}
       </div>
