@@ -1,0 +1,28 @@
+.parcours-with-photo {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  /* align-items: flex-start;
+  justify-content: space-between;
+  gap: 5%; */
+}
+
+.parcours-with-photo > * {
+  flex: 1;
+}
+
+.parcours-section-photo {
+  width: 150px;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5rem;
+  justify-content: center; /* centre horizontalement la grille */
+  width: fit-content; /* largeur juste nécessaire */
+  margin: 0 auto; /* centre le conteneur dans la page */
+}

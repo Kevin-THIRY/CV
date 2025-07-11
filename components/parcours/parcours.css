@@ -41,7 +41,7 @@
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  width: 50%;
+  width: 100%;
 }
 
 /* Bloc texte avec point */
@@ -110,4 +110,30 @@
 }
 .parcours-text-3 {
   margin-left: 0;
+}
+
+.parcours-container.right .parcours-header {
+  margin-right: -4%;
+  flex-direction: row-reverse;
+  gap: 1%;
+}
+
+.parcours-container.right .parcours-texts {
+  margin-right: 2%;
+  flex-direction: row-reverse;
+}
+
+.parcours-container.right .parcours-line {
+  order: 1;
+}
+
+.parcours-container.right .parcours-big-zone {
+  padding: 1rem 1rem 1rem 1rem;
+}
+
+.parcours-container.right .parcours-line{
+  position: absolute;
+  /* left: auto; */
+  left: 100.5%;
+  transform: translateX(50%);
 }

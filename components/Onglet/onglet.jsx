@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import Carousel from '../carousel/carousel';
 import './onglet.css';
 import './onglet1.css';
+import './onglet2.css';
 import Parcours from '../parcours/parcours';
+import Card from '../card/card'
 
 const Onglet1 = () => {
   const [activeTab, setActiveTab] = useState('terms');
@@ -117,6 +119,15 @@ const Onglet1 = () => {
                   <span>A1</span>
                 </div>
               </div>
+              <Parcours
+                    photo="../asset/photo.png"
+                    title="Formation"
+                    texts={[
+                      "Texte 1", "Texte 2", "Texte 3",
+                      "Texte 4", "Texte 5", "Texte 6",
+                    ]}
+                    side='left'
+                  />
             </div>
         );
       case 'privacy':
@@ -124,38 +135,50 @@ const Onglet1 = () => {
             <div className="tab-content">
                 <h1>J'ai travaillé avec :</h1>
                 <Carousel />
-                <Parcours
-                  photo="../asset/photo.png"
-                  title="Volvo"
-                  texts={[
-                    "Texte 1 TexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexte", "Texte 2", "Texte 3",
-                    "Texte 4", "Texte 5", "Texte 6",
-                    "Texte 7", "Texte 8", "Texte 9",
-                    "Texte 7", "Texte 8", "Texte 9",
-                    "Texte 7", "Texte 8", "Texte 9",
-                    "Texte 7", "Texte 8", "Texte 9",
-                    "Texte 7", "Texte 8", "Texte 9",
-                    "Texte 7", "Texte 8", "Texte 9",
-                    "Texte 7", "Texte 8", "Texte 9"
-                  ]}
-                />
-
-                <Parcours
-                  photo="../asset/photo.png"
-                  title="DRA"
-                  texts={[
-                    "Texte 1 TexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexte", "Texte 2", "Texte 3",
-                    "Texte 4", "Texte 5", "Texte 6",
-                    "Texte 7", "Texte 8", "Texte 9",
-                    "Texte 7", "Texte 8", "Texte 9",
-                    "Texte 7", "Texte 8", "Texte 9",
-                    "Texte 7", "Texte 8", "Texte 9",
-                    "Texte 7", "Texte 8", "Texte 9",
-                    "Texte 7", "Texte 8", "Texte 9",
-                    "Texte 7", "Texte 8", "Texte 9"
-                  ]}
-                />
-
+                <div className="parcours-with-photo">
+                  <Parcours
+                    photo="../asset/photo.png"
+                    title="Volvo"
+                    texts={[
+                      "Texte 1", "Texte 2", "Texte 3",
+                      "Texte 4", "Texte 5", "Texte 6",
+                      "Texte 7", "Texte 8", "Texte 9",
+                      "Texte 7", "Texte 8", "Texte 9",
+                      "Texte 7", "Texte 8", "Texte 9",
+                      "Texte 7", "Texte 8", "Texte 9",
+                      "Texte 7", "Texte 8", "Texte 9",
+                      "Texte 7", "Texte 8", "Texte 9",
+                      "Texte 7", "Texte 8", "Texte 9"
+                    ]}
+                    side='left'
+                  />
+                  <img src="../asset/flag-uk.png" alt="Section" className="parcours-section-photo" />
+                </div>
+                <div className="parcours-with-photo">
+                  <img src="../asset/flag-fr.png" alt="Section" className="parcours-section-photo" />
+                  <Parcours
+                    photo="../asset/photo.png"
+                    title="DRA"
+                    texts={[
+                      "Texte 1 TexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexte", "Texte 2", "Texte 3",
+                      "Texte 4", "Texte 5", "Texte 6",
+                      "Texte 7", "Texte 8", "Texte 9",
+                      "Texte 7", "Texte 8", "Texte 9",
+                      "Texte 7", "Texte 8", "Texte 9",
+                      "Texte 7", "Texte 8", "Texte 9",
+                      "Texte 7", "Texte 8", "Texte 9",
+                      "Texte 7", "Texte 8", "Texte 9",
+                      "Texte 7", "Texte 8", "Texte 9"
+                    ]}
+                    side='right'
+                  />
+                </div>
+                <div className="card-grid">
+                  <Card photo="../asset/photo.png" name="Noemie LERASLE" profession="Directrice" text='Ingénieur incroyable' />
+                  <Card photo="../asset/photo.png" name="Noemie LERASLE" profession="Directrice" text='Ingénieur incroyable' />
+                  <Card photo="../asset/photo.png" name="Noemie LERASLE" profession="Directrice" text='Ingénieur incroyable' />
+                  <Card photo="../asset/photo.png" name="Noemie LERASLE" profession="Directrice" text='Ingénieur incroyable' />
+                </div>
                 <h2>Privacy Policy</h2>
                 <p className={baseStyle}>Your privacy is our top priority; we never share your data without consent.</p>
                 <p className={baseStyle}>We use advanced encryption to keep your information safe and secure.</p>
