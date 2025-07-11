@@ -1,0 +1,113 @@
+.parcours-container {
+  padding: 1.5rem;
+}
+
+.parcours-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.parcours-photo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 1rem;
+  border: 2px solid #ccc;
+}
+
+.parcours-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.parcours-texts {
+  display: flex;
+  align-items: flex-start;
+  padding-left: 2rem;
+  position: relative;
+}
+
+/* Ligne verticale */
+.parcours-line {
+  position: relative;
+  width: 12px;
+}
+
+/* Colonne droite */
+.parcours-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  width: 50%;
+}
+
+/* Bloc texte avec point */
+.parcours-big-zone {
+  position: relative;
+  background: #ffffff;
+  padding: 1rem 1rem 1rem 2rem; /* espace point */
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.parcours-big-zone.hovered {
+  background-color: #e6f0ff;
+  box-shadow: 0 0 15px rgba(0, 123, 255, 0.9);
+}
+
+.parcours-segment {
+  position: absolute;
+  left: 0%;
+  transform: translateX(-50%);
+  width: 4px;
+  background: linear-gradient(to bottom, #333, #000);
+  border-radius: 2px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.parcours-segment.hovered {
+  background: linear-gradient(to bottom, #007bff, #0056b3);
+  box-shadow: 0 0 12px rgba(0, 123, 255, 0.9);
+}
+
+.parcours-point {
+  position: absolute;
+  left: 0%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  background: #000;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+
+.parcours-point:hover {
+  background: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.9);
+}
+
+.parcours-point.hovered {
+  background: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.9);
+}
+
+/* Textes */
+.parcours-text-1 {
+  margin-bottom: 0.5rem;
+}
+.parcours-text-2 {
+  margin-left: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.parcours-text-3 {
+  margin-left: 0;
+}

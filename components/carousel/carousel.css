@@ -14,7 +14,7 @@
 
 .carousel-item {
   flex: 0 0 auto;
-  padding: 0 6px;
+  padding: 0 2px;
   cursor: pointer;
   transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 40px; /* pill shape */
@@ -23,6 +23,7 @@
   box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+  margin-right: 5rem;
 }
 
 .carousel-item:hover {

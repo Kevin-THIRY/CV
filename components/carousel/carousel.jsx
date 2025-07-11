@@ -86,7 +86,10 @@ const Carousel = () => {
       if (items.length === 0) return;
 
       const firstItem = items[0];
-      const firstItemWidth = firstItem.getBoundingClientRect().width;
+      // const firstItemWidth = firstItem.getBoundingClientRect().width;
+      const style = getComputedStyle(firstItem);
+      const marginRight = parseFloat(style.marginRight);
+      const firstItemWidth = firstItem.getBoundingClientRect().width + marginRight;
 
       if (Math.abs(posRef.current) >= firstItemWidth) {
         track.appendChild(firstItem);

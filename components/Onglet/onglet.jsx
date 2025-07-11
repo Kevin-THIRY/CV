@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Carousel from '../carousel/carousel';
 import './onglet.css';
 import './onglet1.css';
+import Parcours from '../parcours/parcours';
 
 const Onglet1 = () => {
   const [activeTab, setActiveTab] = useState('terms');
@@ -11,7 +12,6 @@ const Onglet1 = () => {
     { key: 'terms', label: 'Terms & Conditions', subtitle: 'Rules & Stuff' },
     { key: 'privacy', label: 'Privacy Policy', subtitle: 'Your Data' },
     { key: 'refund', label: 'Refund Policy', subtitle: 'Money Back' },
-    { key: 'faq', label: 'FAQ', subtitle: 'Got Questions?' },
   ];
 
   const renderContent = () => {
@@ -25,55 +25,96 @@ const Onglet1 = () => {
             //     <p className={baseStyle}>Breach of these terms may result in suspension or termination of your account.</p>
             // </div>
             <div className="tab-content">
-              {/* Partie 1 : Texte + Image/Vidéo */}
+              {/* Partie 1 : Présentation + Image/Vidéo */}
               <div className="bloc-texte-image">
                 <div className="texte">
-                  <h2>Titre</h2>
-                  <p>Ton texte ici.</p>
+                  <h2>My self</h2>
+                  <p>Passionné, Curieux, aime découvrir de nouvelles technologies et résoudre des problèmes complexes.
+                    Très bonne gestion de projet et très bonne capacité d’analyse.
+                    Sociable, excellent relationnel, sens de la pédagogie.
+                    Entrprenant.</p>
                 </div>
                 <div className="media">
                   <img src="image.jpg" alt="Illustration" />
                 </div>
               </div>
 
-              {/* Partie 2 : Cadre simple */}
+              {/* Partie 2 : Compétences */}
               <div className="cadre-simple">
-                Texte dans un cadre, bien tranquille.
+                Programmation de systèmes de contrôle automatique.
+                Utilisation de systèmes de contrôle embarqués.
+                Compréhension des algorithmes de contrôle de mouvement.
+                Modélisation et simulation robotique.
+                Programmation de robots industriels.
+                Intégration de capteurs et d'actionneurs.
+                Analyse de la cinématique et de la dynamique des robots.
+                Traitement d'images, Vision 3D, Reconnaissance d'objets.
+                Calibration de caméras.
+                Programmation en intelligence artificielle.
+                Utilisation de techniques d'apprentissage machine pour l'optimisation des performances.
               </div>
 
               {/* Partie 3 : Petits cadres avec hover */}
               <div className="mots-hover">
                 <div className="mot">
-                  Mot1
-                  <div className="tooltip">Texte détaillé 1</div>
+                  Python
+                  <div className="tooltip">Projet blablabla</div>
                 </div>
                 <div className="mot">
-                  Mot2
-                  <div className="tooltip">Texte détaillé 2</div>
+                  C++
+                  <div className="tooltip">Projet blablabla</div>
                 </div>
                 <div className="mot">
-                  Mot3
-                  <div className="tooltip">Texte détaillé 3</div>
+                  C#
+                  <div className="tooltip">Projet blablabla</div>
+                </div>
+                <div className="mot">
+                  ROS
+                  <div className="tooltip">Projet blablabla</div>
+                </div>
+                <div className="mot">
+                  JavaScript
+                  <div className="tooltip">Projet blablabla</div>
+                </div>
+                <div className="mot">
+                  Matlab
+                  <div className="tooltip">Projet blablabla</div>
+                </div>
+                <div className="mot">
+                  VBA
+                  <div className="tooltip">Projet blablabla</div>
+                </div>
+                <div className="mot">
+                  React
+                  <div className="tooltip">Projet blablabla</div>
+                </div>
+                <div className="mot">
+                  Vue JS
+                  <div className="tooltip">Projet blablabla</div>
+                </div>
+                <div className="mot">
+                  SQL
+                  <div className="tooltip">Projet blablabla</div>
                 </div>
               </div>
 
-              {/* Partie 4 : Drapeaux avec nombres */}
+              {/* Partie 4 : Drapeaux avec niveaux */}
               <div className="drapeaux">
                 <div className="drapeau">
-                  <img src="flag-fr.png" alt="FR" />
-                  <span>12</span>
+                  <img src="../asset/flag-fr.png" alt="FR" />
+                  <span>C2</span>
                 </div>
                 <div className="drapeau">
-                  <img src="flag-us.png" alt="US" />
-                  <span>8</span>
+                  <img src="../asset/flag-uk.png" alt="US" />
+                  <span>C1</span>
                 </div>
                 <div className="drapeau">
-                  <img src="flag-es.png" alt="ES" />
-                  <span>5</span>
+                  <img src="../asset/flag-de.png" alt="DE" />
+                  <span>B2</span>
                 </div>
                 <div className="drapeau">
-                  <img src="flag-de.png" alt="DE" />
-                  <span>3</span>
+                  <img src="../asset/flag-jp.png" alt="JP" />
+                  <span>A1</span>
                 </div>
               </div>
             </div>
@@ -81,7 +122,40 @@ const Onglet1 = () => {
       case 'privacy':
         return (
             <div className="tab-content">
+                <h1>J'ai travaillé avec :</h1>
                 <Carousel />
+                <Parcours
+                  photo="../asset/photo.png"
+                  title="Volvo"
+                  texts={[
+                    "Texte 1 TexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexte", "Texte 2", "Texte 3",
+                    "Texte 4", "Texte 5", "Texte 6",
+                    "Texte 7", "Texte 8", "Texte 9",
+                    "Texte 7", "Texte 8", "Texte 9",
+                    "Texte 7", "Texte 8", "Texte 9",
+                    "Texte 7", "Texte 8", "Texte 9",
+                    "Texte 7", "Texte 8", "Texte 9",
+                    "Texte 7", "Texte 8", "Texte 9",
+                    "Texte 7", "Texte 8", "Texte 9"
+                  ]}
+                />
+
+                <Parcours
+                  photo="../asset/photo.png"
+                  title="DRA"
+                  texts={[
+                    "Texte 1 TexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexte", "Texte 2", "Texte 3",
+                    "Texte 4", "Texte 5", "Texte 6",
+                    "Texte 7", "Texte 8", "Texte 9",
+                    "Texte 7", "Texte 8", "Texte 9",
+                    "Texte 7", "Texte 8", "Texte 9",
+                    "Texte 7", "Texte 8", "Texte 9",
+                    "Texte 7", "Texte 8", "Texte 9",
+                    "Texte 7", "Texte 8", "Texte 9",
+                    "Texte 7", "Texte 8", "Texte 9"
+                  ]}
+                />
+
                 <h2>Privacy Policy</h2>
                 <p className={baseStyle}>Your privacy is our top priority; we never share your data without consent.</p>
                 <p className={baseStyle}>We use advanced encryption to keep your information safe and secure.</p>
@@ -95,15 +169,6 @@ const Onglet1 = () => {
                 <p className={baseStyle}>We offer refunds within 30 days of purchase, no questions asked.</p>
                 <p className={baseStyle}>Refunds may take up to 7 business days to process.</p>
                 <p className={baseStyle}>Please contact support if you experience any issues.</p>
-            </div>
-        );
-      case 'faq':
-        return (
-            <div className="tab-content">
-                <h2>FAQ</h2>
-                <p className={baseStyle}>Q: How do I reset my password?<br/>A: Use the "Forgot Password" link on login.</p>
-                <p className={baseStyle}>Q: Can I upgrade my subscription?<br/>A: Yes, via your account settings.</p>
-                <p className={baseStyle}>Q: How do I contact support?<br/>A: Email support@example.com anytime.</p>
             </div>
         );
       default:
