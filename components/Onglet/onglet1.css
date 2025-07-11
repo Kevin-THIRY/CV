@@ -1,0 +1,87 @@
+.bloc-texte-image {
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.bloc-texte-image .texte {
+  flex: 1;
+  padding: 1rem;
+}
+
+.bloc-texte-image .media {
+  flex: 1;
+  background: #eee;
+}
+
+.bloc-texte-image .media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cadre-simple {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  border-radius: 8px;
+  background: #fafafa;
+}
+
+.mots-hover {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5rem;
+  gap: 1rem;
+}
+
+.mot {
+  position: relative;
+  border: 1px solid #ccc;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #f0f0f0;
+  transition: background 0.2s;
+}
+
+.mot:hover {
+  background: #ddd;
+}
+
+.tooltip {
+  position: absolute;
+  top: -2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: black;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 4px;
+  display: none;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+.mot:hover .tooltip {
+  display: block;
+}
+
+.drapeaux {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.drapeau {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.drapeau img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+}

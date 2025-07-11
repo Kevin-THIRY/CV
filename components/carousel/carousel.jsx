@@ -12,7 +12,7 @@ const Carousel = () => {
   const trackRef = useRef(null);
   const animationRef = useRef(null);
   const posRef = useRef(0);
-  const speed = 1;
+  const speed = 0.3;
 
   const [displayImages, setDisplayImages] = useState([]);
 

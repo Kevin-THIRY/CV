@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Carousel from '../carousel/carousel';
 import './onglet.css';
+import './onglet1.css';
 
 const Onglet1 = () => {
   const [activeTab, setActiveTab] = useState('terms');
@@ -17,73 +18,70 @@ const Onglet1 = () => {
     switch (activeTab) {
       case 'terms':
         return (
+            // <div className="tab-content">
+            //     <h2>Terms & Conditions</h2>
+            //     <p className={baseStyle}>Welcome to our terms of service, where we outline your rights and responsibilities.</p>
+            //     <p className={baseStyle}>These terms govern your use of our platform, and it's crucial you understand them.</p>
+            //     <p className={baseStyle}>Breach of these terms may result in suspension or termination of your account.</p>
+            // </div>
             <div className="tab-content">
-                <h2>Terms & Conditions</h2>
-                <p className={baseStyle}>Welcome to our terms of service, where we outline your rights and responsibilities.</p>
-                <p className={baseStyle}>These terms govern your use of our platform, and it's crucial you understand them.</p>
-                <p className={baseStyle}>Breach of these terms may result in suspension or termination of your account.
-                  Breach of these terms may result in suspension or termination of your account.
-                  Breach of these terms may result in suspension or termination of your account.
-                  Breach of these terms may result in suspension or termination of your account.
-                  Breach of these terms may result in suspension or termination of your account.
-                  Breach of these terms may result in suspension or termination of your account.
-                  Breach of these terms may result in suspension or termination of your account.
-                  
-                  Breach of these terms may result in suspension or termination of your account.
-                  Breach of these terms may result in suspension or termination of your account.
-                  Breach of these terms may result in suspension or termination of your account.
-                  Breach of these terms may result in suspension or termination of your account.
-                  Breach of these terms may result in suspension or termination of your account.
-                  
-                  Breach of these terms may result in suspension or termination of your account.
-                  Breach of these terms may result in suspension or termination of your account.
-                  Breach of these terms may result in suspension or termination of your account.
-                  Breach of these terms may result in suspension or termination of your account.
-                  Breach of these terms may result in suspension or termination of your account.
+              {/* Partie 1 : Texte + Image/Vidéo */}
+              <div className="bloc-texte-image">
+                <div className="texte">
+                  <h2>Titre</h2>
+                  <p>Ton texte ici.</p>
+                </div>
+                <div className="media">
+                  <img src="image.jpg" alt="Illustration" />
+                </div>
+              </div>
 
-                  
-                  Breach of these terms may result in suspension or termination of your account.
-                  Breach of these terms may result in suspension or termination of your account.
-                  Breach of these terms may result in suspension or termination of your account.
-                  Breach of these terms may result in suspension or termination of your account.
-                  Breach of these terms may result in suspension or termination of your account.
-                  
-                  Breach of these terms may result in suspension or termination of your account.
-                  Breach of these terms may result in suspension or termination of your account.
-                  Breach of these terms may result in suspension or termination of your account.
-                  Breach of these terms may result in suspension or termination of your account.
-                  Breach of these terms may result in suspension or termination of your account.
-                  
-                  Breach of these terms may result in suspension or termination of your account.
-                  Breach of these terms may result in suspension or termination of your account.
-                  Breach of these terms may result in suspension or termination of your account.
-                  Breach of these terms may result in suspension or termination of your account.
-                  Breach of these terms may result in suspension or termination of your account.
-                  
-                  Breach of these terms may result in suspension or termination of your account.
-                  Breach of these terms may result in suspension or termination of your account.
-                  Breach of these terms may result in suspension or termination of your account.
-                  Breach of these terms may result in suspension or termination of your account.
-                  Breach of these terms may result in suspension or termination of your account.
+              {/* Partie 2 : Cadre simple */}
+              <div className="cadre-simple">
+                Texte dans un cadre, bien tranquille.
+              </div>
 
-                  
-                  Breach of these terms may result in suspension or termination of your account.
-                  Breach of these terms may result in suspension or termination of your account.
-                  Breach of these terms may result in suspension or termination of your account.
-                  Breach of these terms may result in suspension or termination of your account.
-                  Breach of these terms may result in suspension or termination of your account.
-                  
-                  Breach of these terms may result in suspension or termination of your account.
-                  Breach of these terms may result in suspension or termination of your account.
-                  Breach of these terms may result in suspension or termination of your account.
-                  Breach of these terms may result in suspension or termination of your account.
-                  Breach of these terms may result in suspension or termination of your account.
-                </p>
+              {/* Partie 3 : Petits cadres avec hover */}
+              <div className="mots-hover">
+                <div className="mot">
+                  Mot1
+                  <div className="tooltip">Texte détaillé 1</div>
+                </div>
+                <div className="mot">
+                  Mot2
+                  <div className="tooltip">Texte détaillé 2</div>
+                </div>
+                <div className="mot">
+                  Mot3
+                  <div className="tooltip">Texte détaillé 3</div>
+                </div>
+              </div>
+
+              {/* Partie 4 : Drapeaux avec nombres */}
+              <div className="drapeaux">
+                <div className="drapeau">
+                  <img src="flag-fr.png" alt="FR" />
+                  <span>12</span>
+                </div>
+                <div className="drapeau">
+                  <img src="flag-us.png" alt="US" />
+                  <span>8</span>
+                </div>
+                <div className="drapeau">
+                  <img src="flag-es.png" alt="ES" />
+                  <span>5</span>
+                </div>
+                <div className="drapeau">
+                  <img src="flag-de.png" alt="DE" />
+                  <span>3</span>
+                </div>
+              </div>
             </div>
         );
       case 'privacy':
         return (
             <div className="tab-content">
+                <Carousel />
                 <h2>Privacy Policy</h2>
                 <p className={baseStyle}>Your privacy is our top priority; we never share your data without consent.</p>
                 <p className={baseStyle}>We use advanced encryption to keep your information safe and secure.</p>
@@ -128,7 +126,6 @@ const Onglet1 = () => {
           </div>
         ))}
       </div>
-      <Carousel />
       <div className="onglet-content">
         {renderContent()}
       </div>
