@@ -8,7 +8,7 @@ const HeaderTabs = () => {
     <div className="header-tabs-container">
       <div className="header-photo-wrapper">
         <img
-          src="components/asset/photo.png"
+          src="/asset/photo.png"
           alt="Profile"
           className="header-photo"
         />

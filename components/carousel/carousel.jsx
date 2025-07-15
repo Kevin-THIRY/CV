@@ -3,9 +3,9 @@ import './carousel.css';
 
 const Carousel = () => {
   const images = [
-    '../../asset/earth.jpg',
-    '../../asset/neptune.jpg',
-    '../../asset/saturne.jpg',
+    '/asset/earth.jpg',
+    '/asset/neptune.jpg',
+    '/asset/saturne.jpg',
   ];
 
   const containerRef = useRef(null);

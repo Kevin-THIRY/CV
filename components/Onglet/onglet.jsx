@@ -103,24 +103,24 @@ const Onglet1 = () => {
               {/* Partie 4 : Drapeaux avec niveaux */}
               <div className="drapeaux">
                 <div className="drapeau">
-                  <img src="../asset/flag-fr.png" alt="FR" />
+                  <img src="/asset/flag-fr.png" alt="FR" />
                   <span>C2</span>
                 </div>
                 <div className="drapeau">
-                  <img src="../asset/flag-uk.png" alt="US" />
+                  <img src="/asset/flag-uk.png" alt="US" />
                   <span>C1</span>
                 </div>
                 <div className="drapeau">
-                  <img src="../asset/flag-de.png" alt="DE" />
+                  <img src="/asset/flag-de.png" alt="DE" />
                   <span>B2</span>
                 </div>
                 <div className="drapeau">
-                  <img src="../asset/flag-jp.png" alt="JP" />
+                  <img src="/asset/flag-jp.png" alt="JP" />
                   <span>A1</span>
                 </div>
               </div>
               <Parcours
-                    photo="../asset/photo.png"
+                    photo="/asset/photo.png"
                     title="Formation"
                     texts={[
                       "Texte 1", "Texte 2", "Texte 3",
@@ -137,7 +137,7 @@ const Onglet1 = () => {
                 <Carousel />
                 <div className="parcours-with-photo">
                   <Parcours
-                    photo="../asset/photo.png"
+                    photo="/asset/photo.png"
                     title="Volvo"
                     texts={[
                       "Texte 1", "Texte 2", "Texte 3",
@@ -152,12 +152,12 @@ const Onglet1 = () => {
                     ]}
                     side='left'
                   />
-                  <img src="../asset/flag-uk.png" alt="Section" className="parcours-section-photo" />
+                  <img src="/asset/flag-uk.png" alt="Section" className="parcours-section-photo" />
                 </div>
                 <div className="parcours-with-photo">
-                  <img src="../asset/flag-fr.png" alt="Section" className="parcours-section-photo" />
+                  <img src="/asset/flag-fr.png" alt="Section" className="parcours-section-photo" />
                   <Parcours
-                    photo="../asset/photo.png"
+                    photo="/asset/photo.png"
                     title="DRA"
                     texts={[
                       "Texte 1 TexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexte", "Texte 2", "Texte 3",
@@ -174,10 +174,10 @@ const Onglet1 = () => {
                   />
                 </div>
                 <div className="card-grid">
-                  <Card photo="../asset/photo.png" name="Noemie LERASLE" profession="Directrice" text='Ingénieur incroyable' />
-                  <Card photo="../asset/photo.png" name="Noemie LERASLE" profession="Directrice" text='Ingénieur incroyable' />
-                  <Card photo="../asset/photo.png" name="Noemie LERASLE" profession="Directrice" text='Ingénieur incroyable' />
-                  <Card photo="../asset/photo.png" name="Noemie LERASLE" profession="Directrice" text='Ingénieur incroyable' />
+                  <Card photo="/asset/photo.png" name="Noemie LERASLE" profession="Directrice" text='Ingénieur incroyable' />
+                  <Card photo="/asset/photo.png" name="Noemie LERASLE" profession="Directrice" text='Ingénieur incroyable' />
+                  <Card photo="/asset/photo.png" name="Noemie LERASLE" profession="Directrice" text='Ingénieur incroyable' />
+                  <Card photo="/asset/photo.png" name="Noemie LERASLE" profession="Directrice" text='Ingénieur incroyable' />
                 </div>
                 <h2>Privacy Policy</h2>
                 <p className={baseStyle}>Your privacy is our top priority; we never share your data without consent.</p>
