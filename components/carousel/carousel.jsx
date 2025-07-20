@@ -3,9 +3,12 @@ import './carousel.css';
 
 const Carousel = () => {
   const images = [
-    '/asset/earth.jpg',
-    '/asset/neptune.jpg',
-    '/asset/saturne.jpg',
+    '/asset/volvo_trucks_logo.jpg',
+    '/asset/dra_technologies_logo.jpg',
+    '/asset/abb-logo.png',
+    '/asset/Actemium.png',
+    '/asset/TDF_LOGO.png',
+    '/asset/Resonnance.jpg',
   ];
 
   const containerRef = useRef(null);
