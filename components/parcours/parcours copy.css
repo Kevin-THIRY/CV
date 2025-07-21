@@ -10,16 +10,6 @@
   margin-bottom: 2rem;
 }
 
-.parcours-date-lieu span {
-  display: block;
-  margin-top: 0.2rem;
-  font-size: 0.9rem;
-  color: #555;
-}
-.parcours-date-lieu span:first-child {
-  margin-top: 0;
-}
-
 .parcours-photo {
   width: 60px;
   height: 60px;
@@ -109,38 +99,17 @@
 
 /* Petites variations sur les 3 lignes de texte */
 .parcours-text-1 {
-  font-weight: 600;
+  font-size: clamp(0.5rem, 2vw, 1rem);
   margin-bottom: 0.5rem;
-  color: #222;
 }
-
 .parcours-text-2 {
-  padding-left: 1.5rem;
-  list-style: disc;
+  font-size: clamp(0.5rem, 2vw, 1rem);
+  margin-left: 1.5rem;
   margin-bottom: 0.5rem;
 }
-
-.parcours-text-2 li {
-  margin-bottom: 0.3rem;
-}
-
-/* Environnements : en badge tech */
 .parcours-text-3 {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  padding-left: 0;
-  list-style: none;
-  margin: 0;
-}
-
-.parcours-text-3 li {
-  background: #f0f0f0;
-  padding: 0.3rem 0.6rem;
-  border-radius: 5px;
-  font-family: monospace;
-  font-size: 0.85rem;
-  border: 1px solid #ddd;
+  font-size: clamp(0.5rem, 2vw, 1rem);
+  margin-left: 0;
 }
 
 

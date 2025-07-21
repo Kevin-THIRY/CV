@@ -129,7 +129,7 @@ const Onglet1 = () => {
                 <h1>J'ai travaillé avec :</h1>
                 <Carousel />
                 <div className="parcours-with-photo">
-                  <Parcours
+                  {/* <Parcours
                     photo="/asset/dra_technologies_logo.jpg"
                     title="DRA -- Mars 2024 - Septembre 2025"
                     texts={[
@@ -140,10 +140,59 @@ const Onglet1 = () => {
                       "RESONANCE (Groupe FIRALP) - Réalisation d'un contrôle de cohérence entre pointages et géolocalisation", "Rédaction AF du besoin + Développement de l’applicatif front end, back end + Tests + Recettes", "Technologies : Python",
                     ]}
                     side='left'
+                  /> */}
+                  <Parcours
+                    photo="/asset/dra_technologies_logo.jpg"
+                    title="DRA -- Mars 2024 - Septembre 2025"
+                    date="Mars 2024 - Septembre 2025"
+                    lieu="2355 Av. Henri Schneider, 69330 Meyzieu"
+                    contexte={[
+                      "ABB - Développement sous Excel pour construire des tableaux dynamiques personnalisés à partir de données récupérées depuis une base SQL et des données OPC DA",
+                      "Actemium Lyon Logistics (Groupe Vinci Energies) - Développeur supplémentaire pour du support ticketing + dev de nouvelles fonctionnalités",
+                      "Saint Gobain - Sécuriser les fichiers de configuration de leur soft lors du déploiement de mises à jour",
+                      "TDF - Mise à jour d'un système de diffusion des messages d'alarme pour les tunnels de Fourvière",
+                      "RESONANCE (Groupe FIRALP) - Réalisation d'un contrôle de cohérence entre pointages et géolocalisation",
+                    ]}
+                    taches={[
+                      [
+                        "Trouver des solutions adaptées pour réduire et optimiser le temps de récupération et de traitement",
+                        "Contourner les limites d’Excel afin de pouvoir construire des cartes de chaleur et des graphiques spécifiques",
+                        "Documenter l’ensemble du travail effectué afin de permettre au reste de l’équipe de s’adapter aux futurs besoins en matière de détails graphiques"
+                      ],
+                      [
+                        "Répondre aux besoins clients en assurant un support efficace à la hotline",
+                        "Gérer le ticketing et le suivi des tâches via JIRA",
+                        "Déployer des correctifs à distance et concevoir des stratégies pour résoudre des problèmes complexes",
+                        "Documenter et collaborer sur Confluence pour optimiser les process",
+                        "Développer de nouvelles fonctionnalités en C++ et C#"
+                      ],
+                      [
+                        "Développement d’un algorythme via InnoSetup, pour la réalisation de customs actions pour des installeurs C#",
+                        "Tests / validation"
+                      ],
+                      [
+                        "Recherche de solutions pour contourner l’obsolescence",
+                        "Modification du code Labview"
+                      ],
+                      [
+                        "Rédaction AF du besoin",
+                        "Développement de l’applicatif front end, back end",
+                        "Tests",
+                        "Recettes"
+                      ]
+                    ]}
+                    environnement={[
+                      ["Excel", "SQL"],
+                      ["C++ (Win32)", "C#", "SQL", "Outils JIRA et Confluence"],
+                      ["C#", "InnoSetup (Pascal)"],
+                      ["Labview"],
+                      ["Python"]
+                    ]}
+                    side="left"
                   />
-                  <div class="container-onglet2-photos">
-                    <div class="techno-card full-size">
-                      <div class="photo-grid">
+                  <div className="container-onglet2-photos">
+                    <div className="techno-card full-size">
+                      <div className="photo-grid">
                         <img src="/asset/flag-uk.png" alt="Logo 1" />
                         <img src="/asset/flag-uk.png" alt="Logo 2" />
                         <img src="/asset/flag-uk.png" alt="Logo 3" />
@@ -154,7 +203,7 @@ const Onglet1 = () => {
                 </div>
                 <div className="parcours-with-photo">
                   <img src="/asset/flag-fr.png" alt="Section" className="parcours-section-photo" />
-                  <Parcours
+                  {/* <Parcours
                     photo="/asset/volvo_trucks_logo.jpg"
                     title="Volvo Trucks -- Août 2022 - Décembre 2023"
                     texts={[
@@ -164,6 +213,39 @@ const Onglet1 = () => {
                       "Ingénieur en robotique", "Août 2022 - Septembre 2023", "Objectifs : • Mise en place d’une cellule robotisée dans le cadre d’un projet visant à faire du contrôle qualité en fin de ligne sur les moteurs. Tâches réalisées : • Détection du moteur dans la station, • Développement d’une application afin de créer des points de contrôle, • Calcul des trajectoires des bras robotiques, • Création d’algorithme de Machine Learning permettant de détecter les défauts moteurs sur une image, • Intégration de la brique robot dans le système qualité de Volvo (Volvo vision system). Environnement : • Cobots, Volvo vison system, Python"
                     ]}
                     side='right'
+                  /> */}
+                  <Parcours
+                    photo="/asset/volvo_trucks_logo.jpg"
+                    title="Volvo Trucks -- Août 2022 - Décembre 2023"
+                    date=""
+                    lieu=""
+                    contexte={[
+                      "Ingénieur Data Scientist (Septembre 2023 - Décembre 2023)",
+                      "Ingénieur en robotique (Août 2022 - Septembre 2023)",
+                    ]}
+                    taches={[
+                      [
+                        "Mise en place d’une stratégie de maintenance prédictive sur les stations de test de fuite",
+                        "Détection automatique des faux défauts et localisation des vraies fuites",
+                        "Compréhension approfondie des systèmes de production industrielle",
+                        "Identification et gestion des risques liés aux projets",
+                        "Récolte et analyse de données",
+                        "Développement de Dashboard (monitoring) avec Thingworks"
+                      ],
+                      [
+                        "Mise en place d’une cellule robotisée pour contrôle qualité fin de ligne moteurs",
+                        "Détection moteur",
+                        "Développement application pour points de contrôle",
+                        "Calcul trajectoires bras robotiques",
+                        "Création d’algorithme Machine Learning",
+                        "Intégration dans système qualité Volvo"
+                      ]
+                    ]}
+                    environnement={[
+                      ["Thingworks", "Local Outlier Factor", "Python", "Java", "C++"],
+                      ["Cobots", "Volvo vision system", "Python"]
+                    ]}
+                    side="right"
                   />
                 </div>
                 <div className="card-grid">
