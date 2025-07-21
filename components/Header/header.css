@@ -59,6 +59,13 @@
   background: rgba(255, 255, 255, 0.35);
 }
 
+@media (max-width: 767px) {
+  .header-tab-box {
+    font-size: 0.8rem; /* texte plus petit sur mobile */
+    padding: 0.4rem 0.8rem; /* padding réduit */
+  }
+}
+
 /* ----- TABLETTE ET PLUS ----- */
 @media (min-width: 768px) {
   .header-tabs-container {
