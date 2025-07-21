@@ -1,7 +1,9 @@
+/* ---------- Base container ---------- */
 .parcours-container {
   padding: 1.5rem;
 }
 
+/* Header photo + titre */
 .parcours-header {
   display: flex;
   align-items: center;
@@ -23,36 +25,71 @@
   color: #333;
 }
 
-.parcours-texts {
-  display: flex;
-  align-items: flex-start;
-  padding-left: 2rem;
-  position: relative;
-}
 
-/* Ligne verticale */
-.parcours-line {
-  position: relative;
-  width: 12px;
-}
-
-/* Colonne droite */
-.parcours-groups {
+/* ---------- Steps list ---------- */
+.parcours-steps {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
-  width: 100%;
+  gap: 3rem; /* espace vertical entre les étapes */
+  position: relative;
 }
 
-/* Bloc texte avec point */
-.parcours-big-zone {
+/* Une étape = ligne + bloc texte */
+.parcours-step {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+
+/* ---------- Ligne verticale (point + segment) ---------- */
+.parcours-line-part {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20px;          /* largeur de colonne pour la ligne */
   position: relative;
+  margin-top: 4px;      /* léger alignement avec le bloc */
+}
+
+.parcours-point {
+  width: 12px;
+  height: 12px;
+  background: #000;
+  border-radius: 50%;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1;
+}
+
+/* segment = hauteur contrôlée inline (JS) */
+.parcours-segment {
+  width: 2px;
+  /* height: auto => fourni inline */
+  background: linear-gradient(to bottom, #333, #000);
+  border-radius: 2px;
+  margin-top: 4px;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.parcours-point.hovered,
+.parcours-segment.hovered {
+  background: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.9);
+}
+
+
+/* ---------- Bloc texte ---------- */
+.parcours-big-zone {
+  flex-grow: 1;
   background: #ffffff;
-  padding: 1rem 1rem 1rem 2rem; /* espace point */
+  padding: 1rem 1rem 1rem 2rem;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   transition: box-shadow 0.3s ease, background-color 0.3s ease;
   cursor: pointer;
+  font-size: 1rem;
+  line-height: 1.35;
 }
 
 .parcours-big-zone.hovered {
@@ -60,47 +97,7 @@
   box-shadow: 0 0 15px rgba(0, 123, 255, 0.9);
 }
 
-.parcours-segment {
-  position: absolute;
-  left: 0%;
-  transform: translateX(-50%);
-  width: 4px;
-  background: linear-gradient(to bottom, #333, #000);
-  border-radius: 2px;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
-  transition: background 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-}
-
-.parcours-segment.hovered {
-  background: linear-gradient(to bottom, #007bff, #0056b3);
-  box-shadow: 0 0 12px rgba(0, 123, 255, 0.9);
-}
-
-.parcours-point {
-  position: absolute;
-  left: 0%;
-  transform: translateX(-50%);
-  width: 12px;
-  height: 12px;
-  background: #000;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-
-.parcours-point:hover {
-  background: #007bff;
-  box-shadow: 0 0 8px rgba(0, 123, 255, 0.9);
-}
-
-.parcours-point.hovered {
-  background: #007bff;
-  box-shadow: 0 0 8px rgba(0, 123, 255, 0.9);
-}
-
-/* Textes */
+/* Petites variations sur les 3 lignes de texte */
 .parcours-text-1 {
   margin-bottom: 0.5rem;
 }
@@ -112,28 +109,101 @@
   margin-left: 0;
 }
 
+
+/* ---------- Variante côté droit ---------- */
+/* Inversion visuelle : photo à droite, bloc texte à droite, ligne à droite */
 .parcours-container.right .parcours-header {
-  margin-right: -4%;
   flex-direction: row-reverse;
-  gap: 1%;
+  gap: 1rem;
+  text-align: right;
 }
 
-.parcours-container.right .parcours-texts {
-  margin-right: 2%;
-  flex-direction: row-reverse;
+.parcours-container.right .parcours-step {
+  /* flex-direction: row-reverse; */
+  flex-direction: row;
 }
 
-.parcours-container.right .parcours-line {
-  order: 1;
+.parcours-container.right .parcours-line-part {
+  order: 2; /* ligne après bloc texte visuellement */
 }
 
 .parcours-container.right .parcours-big-zone {
-  padding: 1rem 1rem 1rem 1rem;
+  padding: 1rem 2rem 1rem 1rem; /* miroir */
+  text-align: right;
 }
 
-.parcours-container.right .parcours-line{
-  position: absolute;
-  /* left: auto; */
-  left: 100.5%;
-  transform: translateX(50%);
+.parcours-container.right .parcours-text-2 {
+  margin-left: 0;
+  margin-right: 1.5rem;
+}
+.parcours-container.right .parcours-text-3 {
+  margin-left: 0;
+}
+
+
+/* ---------- Responsive (<768px) ---------- */
+@media (max-width: 768px) {
+  .parcours-container {
+    padding: 1rem;
+  }
+
+  .parcours-header {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 1.25rem;
+  }
+
+  .parcours-photo {
+    width: 50px;
+    height: 50px;
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .parcours-title {
+    font-size: 1.2rem;
+    text-align: left;
+  }
+
+  .parcours-steps {
+    gap: 2rem;
+  }
+
+  .parcours-step {
+    gap: 0.75rem;
+  }
+
+  .parcours-line-part {
+    width: 16px;
+    margin-top: 2px;
+  }
+
+  .parcours-point {
+    width: 10px;
+    height: 10px;
+  }
+
+  .parcours-big-zone {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .parcours-text-2 {
+    margin-left: 1rem;
+  }
+
+  /* Variante right sur mobile : on simplifie, tout aligné gauche pour lisibilité
+     -> Si tu veux absolument garder droite, commente les 3 règles ci-dessous */
+  .parcours-container.right .parcours-header,
+  .parcours-container.right .parcours-step {
+    flex-direction: row; /* annule inversion, lisible mobile */
+  }
+  .parcours-container.right .parcours-big-zone {
+    text-align: left;
+    padding: 0.75rem 1rem;
+  }
+  .parcours-container.right .parcours-text-2 {
+    margin-right: 0;
+    margin-left: 1rem;
+  }
 }
