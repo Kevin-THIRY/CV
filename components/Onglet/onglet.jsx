@@ -120,11 +120,10 @@ const Onglet1 = () => {
                 </div>
               </div>
               <Parcours
-                    photo="/asset/photo.png"
+                    photo="/asset/cpe-logo.png"
                     title="Formation"
                     texts={[
-                      "Texte 1", "Texte 2", "Texte 3",
-                      "Texte 4", "Texte 5", "Texte 6",
+                      "CPE Lyon", "Diplôme d'ingénieur, Ingénierie mécatronique, robotique et automatisation Spécialité : robotique de service (Robot Operating System (ROS))", "2019 - 2022"
                     ]}
                     side='left'
                   />
@@ -148,7 +147,17 @@ const Onglet1 = () => {
                     ]}
                     side='left'
                   />
-                  <img src="/asset/flag-uk.png" alt="Section" className="parcours-section-photo" />
+                  <div class="container-onglet2-photos">
+                    <div class="techno-card full-size">
+                      <div class="photo-grid">
+                        <img src="/asset/flag-uk.png" alt="Logo 1" />
+                        <img src="/asset/flag-uk.png" alt="Logo 2" />
+                        <img src="/asset/flag-uk.png" alt="Logo 3" />
+                        <img src="/asset/flag-uk.png" alt="Logo 4" />
+                      </div>
+                    </div>
+                  </div>
+                  {/* <img src="/asset/flag-uk.png" alt="Section" className="parcours-section-photo" /> */}
                 </div>
                 <div className="parcours-with-photo">
                   <img src="/asset/flag-fr.png" alt="Section" className="parcours-section-photo" />

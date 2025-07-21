@@ -1,45 +1,91 @@
 .header-tabs-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
   background: #06a729;
-  padding: 1rem 0;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+  padding: 1rem 1.5rem 2rem; /* top 1rem, left/right 1.5rem, bottom 2rem */
+  box-sizing: border-box; /* toujours utile */
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
   box-shadow: 0 5px 20px rgba(0,0,0,0.1);
 }
 
-.header-tabs {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.header-tab-box {
-  background: rgba(255, 255, 255, 0.2);
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  color: white;
-  font-weight: bold;
-  transition: background 0.3s ease;
-}
-
-.header-tab-box:hover {
-  background: rgba(255, 255, 255, 0.35);
-}
-
+/* Wrapper photo centré, padding réduit */
 .header-photo-wrapper {
-  margin-right: 2rem;
-  padding: 0 10rem;
+  margin: 0 0 1rem 0;
+  padding: 0;
 }
 
 .header-photo {
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   object-fit: cover;
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
   border: 2px solid white;
   cursor: default;
   user-select: none;
+}
+
+/* Tabs en ligne horizontale, scroll si overflow */
+.header-tabs {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding: 0 1rem;
+  width: 100%;
+  justify-content: center;
+  scrollbar-width: none; /* Firefox */
+}
+
+.header-tabs::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+.header-tab-box {
+  flex: 0 0 auto; /* taille minimum, pas de flex-grow */
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  transition: background 0.3s ease;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.header-tab-box:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/* ----- TABLETTE ET PLUS ----- */
+@media (min-width: 768px) {
+  .header-tabs-container {
+    /* max-width: 1200px; */
+    flex-direction: row;
+    align-items: center;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+  }
+  
+  .header-photo-wrapper {
+    margin-right: 2rem;
+    padding: 0 10rem 0 0;
+  }
+  
+  .header-photo {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .header-tabs {
+    overflow-x: visible;
+    width: auto;
+    padding: 0;
+    justify-content: flex-start;
+  }
+
+  .header-tab-box {
+    padding: 0.75rem 1.5rem;
+  }
 }
