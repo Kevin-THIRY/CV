@@ -151,7 +151,6 @@ const Onglet1 = () => {
                       </div>
                     </div>
                   </div>
-                  {/* <img src="/asset/flag-uk.png" alt="Section" className="parcours-section-photo" /> */}
                 </div>
                 <div className="parcours-with-photo">
                   <img src="/asset/flag-fr.png" alt="Section" className="parcours-section-photo" />
