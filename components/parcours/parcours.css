@@ -99,13 +99,16 @@
 
 /* Petites variations sur les 3 lignes de texte */
 .parcours-text-1 {
+  font-size: clamp(0.5rem, 2vw, 1rem);
   margin-bottom: 0.5rem;
 }
 .parcours-text-2 {
+  font-size: clamp(0.5rem, 2vw, 1rem);
   margin-left: 1.5rem;
   margin-bottom: 0.5rem;
 }
 .parcours-text-3 {
+  font-size: clamp(0.5rem, 2vw, 1rem);
   margin-left: 0;
 }
 

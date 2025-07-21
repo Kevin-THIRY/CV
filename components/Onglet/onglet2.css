@@ -82,12 +82,15 @@
 /* Responsive spécifique */
 @media (max-width: 768px) {
   .parcours-with-photo {
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
     gap: 1rem;
   }
+
   .parcours-section-photo {
-    width: 100%;
-    max-height: 200px;
+    width: 150px;
+    height: auto;
   }
 
   .card-grid {
@@ -114,6 +117,7 @@
     gap: 0.5rem;
     padding: 0 0.5rem;
   }
+
   .photo-grid img {
     height: 120px;
     margin-right: 0.5rem;
