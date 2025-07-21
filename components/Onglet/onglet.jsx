@@ -20,12 +20,6 @@ const Onglet1 = () => {
     switch (activeTab) {
       case 'terms':
         return (
-            // <div className="tab-content">
-            //     <h2>Terms & Conditions</h2>
-            //     <p className={baseStyle}>Welcome to our terms of service, where we outline your rights and responsibilities.</p>
-            //     <p className={baseStyle}>These terms govern your use of our platform, and it's crucial you understand them.</p>
-            //     <p className={baseStyle}>Breach of these terms may result in suspension or termination of your account.</p>
-            // </div>
             <div className="tab-content">
               {/* Partie 1 : Présentation + Image/Vidéo */}
               <div className="bloc-texte-image">
