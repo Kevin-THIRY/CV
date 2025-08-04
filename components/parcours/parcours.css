@@ -42,6 +42,7 @@
   flex-direction: column;
   gap: 3rem; /* espace vertical entre les étapes */
   position: relative;
+  width: fit-content;
 }
 
 /* Une étape = ligne + bloc texte */
@@ -50,6 +51,18 @@
   flex-direction: row;
   align-items: flex-start;
   gap: 1rem;
+}
+
+/* Aligner à gauche par défaut */
+.parcours-container.left .parcours-steps {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* Aligner à droite si "right" */
+.parcours-container.right .parcours-steps {
+  margin-left: auto;
+  margin-right: 0;
 }
 
 
@@ -109,8 +122,11 @@
 
 /* Petites variations sur les 3 lignes de texte */
 .parcours-text-1 {
+  text-align: left;
+  margin-left: 1.5rem;
+  margin-right: 0;
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   color: #222;
 }
 
@@ -122,6 +138,22 @@
 
 .parcours-text-2 li {
   margin-bottom: 0.3rem;
+}
+
+.parcours-text-2.left {
+  text-align: left;
+  padding-left: 1.5rem;
+  padding-right: 0;
+}
+
+.parcours-text-2.right {
+  text-align: right;
+  padding-left: 0;
+  padding-right: 1.5rem;
+}
+
+.parcours-text-2.right li {
+  direction: rtl;
 }
 
 /* Environnements : en badge tech */
@@ -141,6 +173,18 @@
   font-family: monospace;
   font-size: 0.85rem;
   border: 1px solid #ddd;
+}
+
+.parcours-text-3.left {
+  justify-content: flex-start;
+  padding-left: 1.5rem;
+  padding-right: 0;
+}
+
+.parcours-text-3.right {
+  justify-content: flex-end;
+  padding-left: 0;
+  padding-right: 1.5rem;
 }
 
 
@@ -166,6 +210,11 @@
   text-align: right;
 }
 
+.parcours-container.right .parcours-text-1 {
+  text-align: right;
+  margin-left: 0;
+  margin-right: 1.5rem;
+}
 .parcours-container.right .parcours-text-2 {
   margin-left: 0;
   margin-right: 1.5rem;

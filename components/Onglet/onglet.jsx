@@ -151,7 +151,8 @@ const Onglet1 = () => {
                       "Actemium Lyon Logistics (Groupe Vinci Energies) - Développeur supplémentaire pour du support ticketing + dev de nouvelles fonctionnalités",
                       "Saint Gobain - Sécuriser les fichiers de configuration de leur soft lors du déploiement de mises à jour",
                       "TDF - Mise à jour d'un système de diffusion des messages d'alarme pour les tunnels de Fourvière",
-                      "RESONANCE (Groupe FIRALP) - Réalisation d'un contrôle de cohérence entre pointages et géolocalisation",
+                      "RESONANCE (Groupe FIRALP)"
+                      // "RESONANCE (Groupe FIRALP) - Réalisation d'un contrôle de cohérence entre pointages et géolocalisation",
                     ]}
                     taches={[
                       [
@@ -190,7 +191,7 @@ const Onglet1 = () => {
                     ]}
                     side="left"
                   />
-                  <div className="container-onglet2-photos">
+                  {/* <div className="container-onglet2-photos">
                     <div className="techno-card full-size">
                       <div className="photo-grid">
                         <img src="/asset/flag-uk.png" alt="Logo 1" />
@@ -199,10 +200,10 @@ const Onglet1 = () => {
                         <img src="/asset/flag-uk.png" alt="Logo 4" />
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
                 <div className="parcours-with-photo">
-                  <img src="/asset/flag-fr.png" alt="Section" className="parcours-section-photo" />
+                  {/* <img src="/asset/flag-fr.png" alt="Section" className="parcours-section-photo" /> */}
                   {/* <Parcours
                     photo="/asset/volvo_trucks_logo.jpg"
                     title="Volvo Trucks -- Août 2022 - Décembre 2023"

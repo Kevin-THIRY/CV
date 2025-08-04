@@ -68,7 +68,7 @@ const Parcours = ({
               <div className="parcours-text parcours-text-1">{ctx}</div>
 
               {/* Tâches */}
-              <ul className="parcours-text parcours-text-2">
+              <ul className={`parcours-text parcours-text-2 ${isRight ? 'right' : 'left'}`}>
                 {(taches[idx] || []).map((tache, i) => (
                   <li key={i}>{tache}</li>
                 ))}
@@ -76,7 +76,7 @@ const Parcours = ({
               {/* <div className="parcours-text parcours-text-2">{taches[idx]}</div> */}
 
               {/* Environnements */}
-              <ul className="parcours-text parcours-text-3">
+              <ul className={`parcours-text parcours-text-3 ${isRight ? 'right' : 'left'}`}>
                 {(environnement[idx] || []).map((tech, i) => (
                   <li key={i}>{tech}</li>
                 ))}

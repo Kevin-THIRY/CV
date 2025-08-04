@@ -6,12 +6,12 @@
 .parcours-with-photo > * {
   flex: 1;
 }
-.parcours-section-photo {
+/* .parcours-section-photo {
   width: 150px;
   height: auto;
   border-radius: 8px;
   object-fit: cover;
-}
+} */
 
 .card-grid {
   display: grid;
@@ -22,7 +22,7 @@
   margin: 0 auto;
 }
 
-.container-onglet2-photos {
+/* .container-onglet2-photos {
   width: 100%;
   height: 100vh;
   display: flex;
@@ -30,7 +30,7 @@
   padding: 1rem;
   background-color: #f9f9f9;
   box-sizing: border-box;
-}
+} */
 
 .techno-card {
   width: 100%;
@@ -56,7 +56,7 @@
   color: #007BFF;
 }
 
-.photo-grid {
+/* .photo-grid {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -77,7 +77,7 @@
   display: block;
 }
 .photo-grid img:nth-child(odd) { align-self: flex-start; }
-.photo-grid img:nth-child(even) { align-self: flex-end; }
+.photo-grid img:nth-child(even) { align-self: flex-end; } */
 
 /* Responsive spécifique */
 @media (max-width: 768px) {
@@ -88,10 +88,10 @@
     gap: 1rem;
   }
 
-  .parcours-section-photo {
+  /* .parcours-section-photo {
     width: 150px;
     height: auto;
-  }
+  } */
 
   .card-grid {
     grid-template-columns: 1fr;
@@ -104,12 +104,12 @@
     font-size: 1rem;
   }
 
-  .container-onglet2-photos {
+  /* .container-onglet2-photos {
     height: auto;
     padding: 0.5rem;
-  }
+  } */
 
-  .photo-grid {
+  /* .photo-grid {
     flex-direction: row;
     overflow-x: auto;
     overflow-y: hidden;
@@ -122,5 +122,5 @@
     height: 120px;
     margin-right: 0.5rem;
     align-self: center !important;
-  }
+  } */
 }
