@@ -9,11 +9,11 @@ import Card from '../card/card'
 const Onglet1 = () => {
   const [activeTab, setActiveTab] = useState('terms');
   const baseStyle = "animated-paragraph";
-
+  
   const tabs = [
     { key: 'terms', label: 'Terms & Conditions', subtitle: 'Rules & Stuff' },
     { key: 'privacy', label: 'Privacy Policy', subtitle: 'Your Data' },
-    { key: 'refund', label: 'Refund Policy', subtitle: 'Money Back' },
+    { key: 'projects', label: 'Personnal projects', subtitle: 'Personnal' },
   ];
 
   const renderContent = () => {
@@ -128,7 +128,11 @@ const Onglet1 = () => {
             <div className="tab-content">
                 <h1>J'ai travaillé avec :</h1>
                 <Carousel />
-                <div className="parcours-with-photo">
+                <div class="timeline">
+                  <a href="#dra" class="timeline-point">DRA Technologies</a>
+                  <a href="#volvo" class="timeline-point">Volvo Trucks</a>
+                </div>
+                <div id="dra" className="parcours-with-photo">
                   {/* <Parcours
                     photo="/asset/dra_technologies_logo.jpg"
                     title="DRA -- Mars 2024 - Septembre 2025"
@@ -147,7 +151,7 @@ const Onglet1 = () => {
                     date="Mars 2024 - Septembre 2025"
                     lieu="2355 Av. Henri Schneider, 69330 Meyzieu"
                     contexte={[
-                      "ABB - Développement sous Excel pour construire des tableaux dynamiques personnalisés à partir de données récupérées depuis une base SQL et des données OPC DA",
+                      "ABB - Développement sous Excel (VBA) avec des données récupérées depuis une base SQL et des données OPC DA",
                       "Actemium Lyon Logistics (Groupe Vinci Energies) - Développeur supplémentaire pour du support ticketing + dev de nouvelles fonctionnalités",
                       "Saint Gobain - Sécuriser les fichiers de configuration de leur soft lors du déploiement de mises à jour",
                       "TDF - Mise à jour d'un système de diffusion des messages d'alarme pour les tunnels de Fourvière",
@@ -202,7 +206,7 @@ const Onglet1 = () => {
                     </div>
                   </div> */}
                 </div>
-                <div className="parcours-with-photo">
+                <div id="volvo" className="parcours-with-photo">
                   {/* <img src="/asset/flag-fr.png" alt="Section" className="parcours-section-photo" /> */}
                   {/* <Parcours
                     photo="/asset/volvo_trucks_logo.jpg"
@@ -255,19 +259,33 @@ const Onglet1 = () => {
                   <Card photo="/asset/photo.png" name="Noemie LERASLE" profession="Directrice" text='Ingénieur incroyable' />
                   <Card photo="/asset/photo.png" name="Noemie LERASLE" profession="Directrice" text='Ingénieur incroyable' />
                 </div>
-                <h2>Privacy Policy</h2>
-                <p className={baseStyle}>Your privacy is our top priority; we never share your data without consent.</p>
-                <p className={baseStyle}>We use advanced encryption to keep your information safe and secure.</p>
-                <p className={baseStyle}>You can request to see, edit, or delete your data at any time.</p>
             </div>
         );
-      case 'refund':
+      case 'projects':
         return (
             <div className="tab-content">
-                <h2>Refund Policy</h2>
-                <p className={baseStyle}>We offer refunds within 30 days of purchase, no questions asked.</p>
-                <p className={baseStyle}>Refunds may take up to 7 business days to process.</p>
-                <p className={baseStyle}>Please contact support if you experience any issues.</p>
+                <h2>Projets Personnels</h2>
+
+                <div className={baseStyle}>
+                    <h3>💼 Portfolio (ce site)</h3>
+                    <p>Site personnel développé en React et JavaScript + Vercel. Hébergé en ligne. Responsive et minimaliste.</p>
+                    <a href="https://github.com/Kevin-THIRY/CV.git" target="_blank" rel="noopener noreferrer">
+                        Code sur GitHub
+                    </a>
+                </div>
+
+                <div className={baseStyle}>
+                    <h3>🎮 Jeu Unity — War of time</h3>
+                    <p>Jeu développé sous Unity (C#). Mécaniques principales : 4X, simulation, stratégie. Toujours en dev.</p>
+                    <a href="https://github.com/Kevin-THIRY/WarOfTime.git" target="_blank" rel="noopener noreferrer">
+                        Code sur GitHub
+                    </a>
+                </div>
+
+                <div className={baseStyle}>
+                    <h3>🕹️ Prototype inachevé — Fluppy</h3>
+                    <p>Ancien projet de jeu, débuté sous Unity (C#), jeu de platforme 3D dans l'espace + génération de planète procédurale.</p>
+                </div>
             </div>
         );
       default:

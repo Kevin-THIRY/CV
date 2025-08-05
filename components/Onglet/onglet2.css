@@ -2,10 +2,56 @@
   display: flex;
   width: 100%;
   align-items: center;
+  justify-content: center;
+
+  background-color: #ececec;
+  padding: 3rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
-.parcours-with-photo > * {
+
+.timeline {
+  position: fixed;
+  left: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  z-index: 100;
+}
+
+.timeline-point {
+  position: relative;
+  padding-left: 2rem;
+  font-size: 1rem;
+  color: #333;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.timeline-point::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.35em;
+  width: 12px;
+  height: 12px;
+  background-color: #4f46e5; /* violet classe */
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+.timeline-point:hover {
+  color: #4f46e5;
+}
+
+.timeline-point:hover::before {
+  transform: scale(1.2);
+}
+/* .parcours-with-photo > * {
   flex: 1;
-}
+} */
 /* .parcours-section-photo {
   width: 150px;
   height: auto;
@@ -86,6 +132,10 @@
     flex-wrap: nowrap;
     overflow-x: auto;
     gap: 1rem;
+  }
+
+  .timeline {
+    display: none;
   }
 
   /* .parcours-section-photo {
