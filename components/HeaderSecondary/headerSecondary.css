@@ -1,0 +1,123 @@
+.header-secondary-container {
+  width: 100vw;
+  height: 200px;
+  background: linear-gradient(to right, #0d001a, #0b3d91);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+  position: relative;
+  top: -60px;
+  overflow: hidden;
+  z-index: 900;
+}
+
+/* Contenu texte à gauche */
+.header-secondary-content {
+  position: relative;
+  transform: translateX(clamp(20vw, -3vw, -1.5vw));
+  display: flex;
+  flex-direction: column;
+  gap: 0rem;
+  z-index: 2;
+  color: rgba(255,255,255,0.95);
+}
+
+/* Nom / prénom */
+.header-name {
+  font-weight: 800;
+  font-size: 1.6rem;
+}
+
+/* Métier */
+.header-title {
+  font-weight: 600;
+  font-size: 1.2rem;
+  opacity: 0.85;
+}
+
+/* Bouton CV */
+.header-cv-btn {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.55rem 1.2rem;
+  background-color: rgba(255, 255, 255, 0.95);
+  color: #0b3d91;
+  font-weight: 700;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.header-cv-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* Image overlay */
+.header-secondary-image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background-image: url('/asset/fond.png');
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+  mask-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,1));
+  -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,1));
+  mask-repeat: no-repeat;
+  mask-size: cover;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: cover;
+}
+
+@media (max-width: 768px) {
+  .header-secondary-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 180px;
+    text-align: center;
+    top: 80px; /* collé au header principal */
+    padding: 0 1rem; /* éviter que le texte touche les bords */
+  }
+
+  .header-secondary-content {
+    position: relative;   /* plus de translateX */
+    transform: none;      /* supprime le décalage */
+    margin: 0 auto;       /* centre le contenu */
+    gap: 0.4rem;
+    width: 100%;          /* contenu prend toute la largeur dispo */
+    max-width: 90%;       /* limite pour que ce soit joli */
+  }
+
+  .header-name {
+    font-size: 1.3rem;
+  }
+
+  .header-title {
+    font-size: 1rem;
+  }
+
+  .header-cv-btn {
+    font-size: 0.9rem;
+    padding: 0.45rem 1rem;
+  }
+
+  .header-secondary-image {
+    position: absolute;
+    top: 0;
+    left: 0;               /* s’étire sur toute la largeur */
+    width: 100%;
+    height: 100%;
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,1));
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,1));
+    mask-repeat: no-repeat;
+    mask-size: cover;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: cover;
+  }
+}

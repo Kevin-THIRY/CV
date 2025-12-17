@@ -1,0 +1,117 @@
+.home-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.home-content {
+  display: flex;
+  gap: 5rem; /* réduit l’espace entre photo et texte */
+  width: 55%;
+  max-width: 1200px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center; /* centre l’ensemble horizontalement */
+}
+
+/* ===== PHOTO + "Bonjour" ===== */
+.home-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 0 0 auto;
+}
+
+.home-welcome {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 2rem; /* rapproche le texte de la photo */
+  color: #0b3d91;
+}
+
+.home-photo {
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* ===== TEXTE + BOUTONS ===== */
+.home-right {
+  flex: 1 1 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+.home-summary {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: #000000;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.home-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+}
+
+.home-buttons a img {
+  width: 80px;
+  height: 80px;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.home-buttons a img:hover {
+  transform: translateY(-3px);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .home-content {
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .home-left {
+    gap: 0.25rem;
+  }
+
+  .home-right {
+    text-align: center;
+    align-items: center;
+  }
+
+  .home-buttons {
+    justify-content: center;
+  }
+
+  .home-photo {
+    width: 200px;
+    height: 200px;
+  }
+
+  .home-welcome {
+    font-size: 1.5rem;
+  }
+}
+
+/* ===== FOOTER EN BAS ===== */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-container > main {
+  flex: 1;
+}

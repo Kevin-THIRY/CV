@@ -1,0 +1,14 @@
+.contact-page {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.contact-title {
+  text-align: center;
+}
+
+.contact-title h1 {
+  font-size: 2.4rem;
+  color: #06a729;
+}

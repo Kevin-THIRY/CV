@@ -1,7 +1,33 @@
+:root {
+  --header-height: 140px;
+}
+
 body, html {
   margin: 0;
   padding: 0;
   width: 100%;
   overflow-x: hidden; /* évite les scrolls horizontaux */
   scroll-behavior: smooth;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  padding-top: var(--header-height); /* espace pour header fixé */
+}
+
+#root {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#root > div:nth-child(2) {
+  width: 100%;
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem;
 }
