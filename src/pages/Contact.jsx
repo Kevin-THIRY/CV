@@ -1,130 +1,137 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Contact.css';
+import Card from '../card/card.jsx';
 
-
+const cardData = [
+  {
+    id: 1,
+    photo: "/photo1.jpg",
+    name: "Alice",
+    profession: "Développeuse",
+    text: "Texte 1",
+    link: "https://www.example1.com"
+  },
+  {
+    id: 2,
+    photo: "/photo2.jpg",
+    name: "Bob",
+    profession: "Designer",
+    text: "Texte 2",
+    link: "https://www.example1.com"
+  },
+  {
+    id: 3,
+    photo: "/photo3.jpg",
+    name: "Charlie",
+    profession: "Chef de projet",
+    text: "Texte 3",
+    link: "https://www.example1.com"
+  },
+  {
+    id: 4,
+    photo: "/photo4.jpg",
+    name: "David",
+    profession: "Marketing",
+    text: "Texte 4",
+    link: "https://www.example1.com"
+  },
+  {
+    id: 5,
+    photo: "/photo4.jpg",
+    name: "Franck",
+    profession: "Cuisinier",
+    text: "Texte 5",
+    link: "https://www.example1.com"
+  },
+];
 
 const Contact = () => {
+
+  const chunkArray = (array, size) => {
+    const result = [];
+    for (let i = 0; i < array.length; i += size) {
+      result.push(array.slice(i, i + size));
+    }
+    return result;
+  };
+
+  const rows = chunkArray(cardData, 3);
+
   return (
-    <div className="contact-page page-container">
-      ...
+    <div className="page">
+      <div className="main-box">
+
+        {/* BOX 1 */}
+        <div className="box box-1">
+          <h1 className="title">Projets personnels et recommendations</h1>
+        </div>
+
+        {/* BOX 2 */}
+        <div className="box box-2">
+          <div className="h-box">
+            {/* Sous-bloc 1 : image + texte horizontal */}
+            <div className="top-box">
+              <img src="/asset/logo_site.jpg" alt="Exemple" className="top-image" />
+              <span className="top-text">Portfolio (ce site)</span>
+            </div>
+
+            {/* Sous-bloc 2 : 2 textes verticaux */}
+            <div className="bottom-box">
+              <p>Mon portfolio : mes projets et expériences en un coup d’œil.</p>
+              <a href="https://github.com/Kevin-THIRY/CV.git" target="_blank" rel="noopener noreferrer" className="bottom-button">Repo git</a>
+            </div>
+          </div>
+
+          <div className="h-box">
+            {/* Sous-bloc 1 : image + texte horizontal */}
+            <div className="top-box">
+              <img src="/asset/logo_WOT.jpg" alt="Exemple" className="top-image" />
+              <span className="top-text">War of Time</span>
+            </div>
+
+            {/* Sous-bloc 2 : 2 textes verticaux */}
+            <div className="bottom-box">
+              <p>Mo jeu vidéo en cours de développement.</p>
+              <a href="https://github.com/Kevin-THIRY/WarOfTime.git" target="_blank" rel="noopener noreferrer" className="bottom-button">Repo git</a>
+            </div>
+          </div>
+
+          <div className="h-box">
+            {/* Sous-bloc 1 : image + texte horizontal */}
+            <div className="top-box">
+              <img src="/asset/logo_fluppy.jpg" alt="Exemple" className="top-image" />
+              <span className="top-text">Fluppy</span>
+            </div>
+
+            {/* Sous-bloc 2 : 2 textes verticaux */}
+            <div className="bottom-box">
+              <p>Ancien projet de jeu</p>
+              <a href="https://github.com/Kevin-THIRY/FluppyProj.git" target="_blank" rel="noopener noreferrer" className="bottom-button">Repo git</a>
+            </div>
+          </div>
+        </div>
+
+        {/* BOX 3 */}
+        <div className="box box-3">
+          {rows.map((row, rowIndex) => (
+            <div key={rowIndex} className="row-box">
+              {row.map(card => (
+                <Card
+                  key={card.id}
+                  photo={card.photo}
+                  name={card.name}
+                  profession={card.profession}
+                  text={card.text}
+                  link={card.link}
+                />
+              ))}
+            </div>
+          ))}
+        </div>
+
+      </div>
     </div>
   );
 };
 
 export default Contact;
-
-
-
-
-
-
-
-
-
-
-// import '../pages.css';
-
-// const Contact = () => {
-//   const [formData, setFormData] = useState({
-//     name: '',
-//     email: '',
-//     subject: '',
-//     message: ''
-//   });
-
-//   const handleChange = (e) => {
-//     const { name, value } = e.target;
-//     setFormData(prev => ({
-//       ...prev,
-//       [name]: value
-//     }));
-//   };
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     console.log('Formulaire soumis:', formData);
-//     // Ici, vous pouvez ajouter la logique pour envoyer le formulaire
-//     alert('Merci pour votre message! Je vous répondrai bientôt.');
-//     setFormData({ name: '', email: '', subject: '', message: '' });
-//   };
-
-//   return (
-//     <div className="page-container">
-//       <div className="page-content">
-//         <h1>Contact</h1>
-        
-//         <div className="contact-info">
-//           <div className="info-block">
-//             <h3>Coordonnées</h3>
-//             <p><strong>Email:</strong> kevin.thiry@example.com</p>
-//             <p><strong>Téléphone:</strong> +33 6 12 34 56 78</p>
-//             <p><strong>Localisation:</strong> Paris, France</p>
-//           </div>
-          
-//           <div className="info-block">
-//             <h3>Réseaux</h3>
-//             <p><a href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
-//             <p><a href="#" target="_blank" rel="noopener noreferrer">GitHub</a></p>
-//             <p><a href="#" target="_blank" rel="noopener noreferrer">Portfolio</a></p>
-//           </div>
-//         </div>
-
-//         <form className="contact-form" onSubmit={handleSubmit}>
-//           <h3>Envoyez-moi un message</h3>
-          
-//           <div className="form-group">
-//             <label htmlFor="name">Nom</label>
-//             <input
-//               type="text"
-//               id="name"
-//               name="name"
-//               value={formData.name}
-//               onChange={handleChange}
-//               required
-//             />
-//           </div>
-
-//           <div className="form-group">
-//             <label htmlFor="email">Email</label>
-//             <input
-//               type="email"
-//               id="email"
-//               name="email"
-//               value={formData.email}
-//               onChange={handleChange}
-//               required
-//             />
-//           </div>
-
-//           <div className="form-group">
-//             <label htmlFor="subject">Sujet</label>
-//             <input
-//               type="text"
-//               id="subject"
-//               name="subject"
-//               value={formData.subject}
-//               onChange={handleChange}
-//               required
-//             />
-//           </div>
-
-//           <div className="form-group">
-//             <label htmlFor="message">Message</label>
-//             <textarea
-//               id="message"
-//               name="message"
-//               rows="5"
-//               value={formData.message}
-//               onChange={handleChange}
-//               required
-//             ></textarea>
-//           </div>
-
-//           <button type="submit" className="submit-btn">Envoyer</button>
-//         </form>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Contact;

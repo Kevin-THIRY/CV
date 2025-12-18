@@ -13,7 +13,7 @@ const HeaderTabs = () => {
     <div className="header-tabs-container">
       <div className="header-profile">
         <img
-          src="/asset/logo.png"
+          src="/asset/logo_site.jpg"
           alt="Profile"
           className="header-photo"
         />

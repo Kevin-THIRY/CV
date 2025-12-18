@@ -8,7 +8,6 @@
   font-family: Arial, sans-serif;
   box-shadow: 0 4px 18px rgba(0,0,0,0.08);
   position: relative;
-  top: -60px;
   overflow: hidden;
   z-index: 900;
 }
@@ -81,7 +80,6 @@
     align-items: center;
     height: 180px;
     text-align: center;
-    top: 80px; /* collé au header principal */
     padding: 0 1rem; /* éviter que le texte touche les bords */
   }
 
