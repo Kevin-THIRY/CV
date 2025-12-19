@@ -91,7 +91,7 @@ const Contact = () => {
 
             {/* Sous-bloc 2 : 2 textes verticaux */}
             <div className="bottom-box">
-              <p>Mo jeu vidéo en cours de développement.</p>
+              <p>Mon jeu vidéo en cours de développement.</p>
               <a href="https://github.com/Kevin-THIRY/WarOfTime.git" target="_blank" rel="noopener noreferrer" className="bottom-button">Repo git</a>
             </div>
           </div>
