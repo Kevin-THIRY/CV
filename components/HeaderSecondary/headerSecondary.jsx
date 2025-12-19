@@ -8,7 +8,7 @@ const HeaderTabsSecondary = () => {
         <div className="header-name">Kevin THIRY</div>
         <div className="header-title">Développeur informatique</div>
         <a
-          href="/asset/CV_Kevin_THIRY.pdf"
+          href="/asset/CV_THIRY_Kevin.pdf"
           download
           className="header-cv-btn"
         >
