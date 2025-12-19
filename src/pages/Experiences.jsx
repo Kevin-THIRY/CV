@@ -175,7 +175,7 @@ const Experiences = () => {
     },
 
     Actemium: {
-      background: '/asset/actemium.png',
+      background: '/asset/Actemium.png',
       contexte: {
         type: 'bullets-inline',
         items: [
