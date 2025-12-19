@@ -63,7 +63,7 @@ const Contact = () => {
 
         {/* BOX 1 */}
         <div className="box box-1">
-          <h1 className="title">Projets personnels et recommendations</h1>
+          <h1 className="title">Projets personnels et recommandations</h1>
         </div>
 
         {/* BOX 2 */}

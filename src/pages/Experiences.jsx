@@ -37,6 +37,7 @@ const Experiences = () => {
       contexte: {
         type: 'bullets-inline',
         items: [
+          'Conception d’un jeu vidéo sous unity',
           'Projet personnel mené en totale autonomie, sans équipe ni encadrement.',
           'Objectif : maîtriser l’ensemble de la chaîne de production d’un jeu 3D temps réel.',
           'Développement sur temps long, avec itérations successives.',
