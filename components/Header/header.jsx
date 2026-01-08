@@ -18,8 +18,7 @@ const HeaderTabs = () => {
           className="header-photo"
         />
         <div className="header-text">
-          <div className="header-name">Portfolio</div>
-          <div className="header-title">???</div>
+          <div className="header-name">CV Numérique</div>
         </div>
       </div>
       <div className="header-tabs">

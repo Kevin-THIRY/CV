@@ -48,12 +48,29 @@
   text-align: left;
 }
 
-.home-summary {
+/* .home-summary {
   font-size: 1rem;
   line-height: 1.6;
   margin-bottom: 2rem;
   color: #000000;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+} */
+
+.home-summary {
+  line-height: 1.6;
+  font-size: 1rem;
+  color: #111827;
+}
+
+.home-summary strong {
+  font-weight: 600;
+  color: #000;
+}
+
+.home-summary u {
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  text-decoration-color: #2563eb;
 }
 
 .home-buttons {
@@ -63,8 +80,8 @@
 }
 
 .home-buttons a img {
-  width: 80px;
-  height: 80px;
+  width: 50px;
+  height: 50px;
   transition: transform 0.2s ease;
   cursor: pointer;
 }

@@ -70,37 +70,37 @@ const Experiences = () => {
       languages: {
         type: 'tags',
         items: [
-          { label: 'C# (.NET) pour l’ensemble de la logique applicative.', icon: '/icons/react.svg' },
-          { label: 'API Unity Engine (MonoBehaviour, ScriptableObjects, Events).', icon: '/icons/js.svg' },
-          { label: 'Notions de mathématiques 3D (vecteurs, rotations, collisions).', icon: '/icons/css.svg' }
+          { label: 'C# (.NET) pour l’ensemble de la logique applicative.', icon: '' },
+          { label: 'API Unity Engine (MonoBehaviour, ScriptableObjects, Events).', icon: '' },
+          { label: 'Notions de mathématiques 3D (vecteurs, rotations, collisions).', icon: '' }
         ]
       },
       data: {
         type: 'tags',
         items: [
-          { label: 'Données de gameplay (stats, paramètres, états).', icon: '/icons/api.svg' },
-          { label: 'Données de configuration via ScriptableObjects.', icon: '/icons/api.svg' },
-          { label: 'Assets 3D (meshes, textures, animations).', icon: '/icons/api.svg' },
-          { label: 'Scènes Unity structurées par responsabilités.', icon: '/icons/api.svg' },
+          { label: 'Données de gameplay (stats, paramètres, états).', icon: '' },
+          { label: 'Données de configuration via ScriptableObjects.', icon: '' },
+          { label: 'Assets 3D (meshes, textures, animations).', icon: '' },
+          { label: 'Scènes Unity structurées par responsabilités.', icon: '' },
         ]
       },
       tools: {
         type: 'tags',
         items: [
-          { label: 'Unity Editor (scènes, lighting, profiler).', icon: '/icons/git.svg' },
-          { label: 'Visual Studio pour le développement C#.', icon: '/icons/git.svg' },
-          { label: 'Git (versioning local et distant).', icon: '/icons/git.svg' },
-          { label: 'Outils de modélisation 3D (type Blender).', icon: '/icons/git.svg' },
-          { label: 'Outils de baking (lightmaps, textures).', icon: '/icons/git.svg' },
+          { label: 'Unity Editor (scènes, lighting, profiler).', icon: '' },
+          { label: 'Visual Studio pour le développement C#.', icon: '' },
+          { label: 'Git (versioning local et distant).', icon: '' },
+          { label: 'Outils de modélisation 3D (type Blender).', icon: '' },
+          { label: 'Outils de baking (lightmaps, textures).', icon: '' },
         ]
       },
       methods: {
         type: 'tags',
         items: [
-          { label: 'Réduction proactive des allocations mémoire.', icon: '/icons/agile.svg' },
-          { label: 'LOD et optimisation géométrique des assets.', icon: '/icons/agile.svg' },
-          { label: 'Tests continus en conditions runtime.', icon: '/icons/agile.svg' },
-          { label: 'Versioning discipliné (commits fréquents, rollback possible).', icon: '/icons/agile.svg' },
+          { label: 'Réduction proactive des allocations mémoire.', icon: '' },
+          { label: 'LOD et optimisation géométrique des assets.', icon: '' },
+          { label: 'Tests continus en conditions runtime.', icon: '' },
+          { label: 'Versioning discipliné (commits fréquents, rollback possible).', icon: '' },
         ]
       }
     },
@@ -140,37 +140,37 @@ const Experiences = () => {
       languages: {
         type: 'tags',
         items: [
-          { label: 'VBA (Excel) pour l’automatisation et la logique métier.', icon: '/icons/react.svg' },
-          { label: 'SQL (T-SQL) pour l’extraction et l’agrégation des données.', icon: '/icons/js.svg' },
-          { label: 'Maîtrise du modèle objet Excel (Workbooks, Worksheets, Ranges).', icon: '/icons/css.svg' }
+          { label: 'VBA (Excel) pour l’automatisation et la logique métier.', icon: '' },
+          { label: 'SQL (T-SQL) pour l’extraction et l’agrégation des données.', icon: '' },
+          { label: 'Maîtrise du modèle objet Excel (Workbooks, Worksheets, Ranges).', icon: '' }
         ]
       },
       data: {
         type: 'tags',
         items: [
-          { label: 'Données issues de capteurs et systèmes industriels.', icon: '/icons/api.svg' },
-          { label: 'Données temporelles (séries chronologiques).', icon: '/icons/api.svg' },
-          { label: 'Données agrégées multi-échelles de temps.', icon: '/icons/api.svg' },
-          { label: 'Fichiers Excel servant de support de restitution et d’archivage.', icon: '/icons/api.svg' },
+          { label: 'Données issues de capteurs et systèmes industriels.', icon: '' },
+          { label: 'Données temporelles (séries chronologiques).', icon: '' },
+          { label: 'Données agrégées multi-échelles de temps.', icon: '' },
+          { label: 'Fichiers Excel servant de support de restitution et d’archivage.', icon: '' },
         ]
       },
       tools: {
         type: 'tags',
         items: [
-          { label: 'Microsoft Excel.', icon: '/icons/git.svg' },
-          { label: 'VBA Editor.', icon: '/icons/git.svg' },
-          { label: 'SQL Server.', icon: '/icons/git.svg' },
-          { label: 'Outils de requêtage SQL (SSMS ou équivalent).', icon: '/icons/git.svg' },
-          { label: 'Système de versioning simple (fichiers, sauvegardes).', icon: '/icons/git.svg' },
+          { label: 'Microsoft Excel.', icon: '' },
+          { label: 'VBA Editor.', icon: '' },
+          { label: 'SQL Server.', icon: '' },
+          { label: 'Outils de requêtage SQL (SSMS ou équivalent).', icon: '' },
+          { label: 'Système de versioning simple (fichiers, sauvegardes).', icon: '' },
         ]
       },
       methods: {
         type: 'tags',
         items: [
-          { label: 'Automatisation complète des chaînes de génération de rapports.', icon: '/icons/agile.svg' },
-          { label: 'Requêtes SQL optimisées en amont pour limiter le traitement côté VBA.', icon: '/icons/agile.svg' },
-          { label: 'Structuration du code VBA par modules fonctionnels.', icon: '/icons/agile.svg' },
-          { label: 'Documentation technique et fonctionnelle exhaustive.', icon: '/icons/agile.svg' },
+          { label: 'Automatisation complète des chaînes de génération de rapports.', icon: '' },
+          { label: 'Requêtes SQL optimisées en amont pour limiter le traitement côté VBA.', icon: '' },
+          { label: 'Structuration du code VBA par modules fonctionnels.', icon: '' },
+          { label: 'Documentation technique et fonctionnelle exhaustive.', icon: '' },
         ]
       }
     },
@@ -212,41 +212,41 @@ const Experiences = () => {
       languages: {
         type: 'tags',
         items: [
-          { label: 'C / C++ Win32 pour applications natives.', icon: '/icons/react.svg' },
-          { label: 'C# .NET pour modules applicatifs et outils complémentaires.', icon: '/icons/js.svg' },
-          { label: 'SQL Server (T-SQL, procédures stockées).', icon: '/icons/css.svg' },
-          { label: 'Connaissance des APIs Windows (threads, mémoire, I/O).', icon: '/icons/css.svg' },
-          { label: 'Debug applicatif en environnement réel.', icon: '/icons/css.svg' },
+          { label: 'C / C++ Win32 pour applications natives.', icon: '' },
+          { label: 'C# .NET pour modules applicatifs et outils complémentaires.', icon: '' },
+          { label: 'SQL Server (T-SQL, procédures stockées).', icon: '' },
+          { label: 'Connaissance des APIs Windows (threads, mémoire, I/O).', icon: '' },
+          { label: 'Debug applicatif en environnement réel.', icon: '' },
         ]
       },
       data: {
         type: 'tags',
         items: [
-          { label: 'Données opérationnelles industrielles.', icon: '/icons/api.svg' },
-          { label: 'Bases SQL Server clients.', icon: '/icons/api.svg' },
-          { label: 'Logs applicatifs et traces d’exécution.', icon: '/icons/api.svg' },
-          { label: 'Données de configuration applicative.', icon: '/icons/api.svg' },
+          { label: 'Données opérationnelles industrielles.', icon: '' },
+          { label: 'Bases SQL Server clients.', icon: '' },
+          { label: 'Logs applicatifs et traces d’exécution.', icon: '' },
+          { label: 'Données de configuration applicative.', icon: '' },
         ]
       },
       tools: {
         type: 'tags',
         items: [
-          { label: 'Visual Studio (C++, C#).', icon: '/icons/git.svg' },
-          { label: 'SQL Server Management Studio.', icon: '/icons/git.svg' },
-          { label: 'Git pour le versioning.', icon: '/icons/git.svg' },
-          { label: 'JIRA pour le suivi des tickets et évolutions.', icon: '/icons/git.svg' },
-          { label: 'Jenkins pour l’intégration et le déploiement.', icon: '/icons/git.svg' }
+          { label: 'Visual Studio (C++, C#).', icon: '' },
+          { label: 'SQL Server Management Studio.', icon: '' },
+          { label: 'Git pour le versioning.', icon: '' },
+          { label: 'JIRA pour le suivi des tickets et évolutions.', icon: '' },
+          { label: 'Jenkins pour l’intégration et le déploiement.', icon: '' }
         ]
       },
       methods: {
         type: 'tags',
         items: [
-          { label: 'Analyse d’incidents basée sur logs et reproduction contrôlée.', icon: '/icons/agile.svg' },
-          { label: 'Debug pas à pas sur code legacy.', icon: '/icons/agile.svg' },
-          { label: 'Corrections ciblées pour limiter l’impact global.', icon: '/icons/agile.svg' },
-          { label: 'Développement incrémental de fonctionnalités.', icon: '/icons/agile.svg' },
-          { label: 'Respect strict des processus de livraison.', icon: '/icons/agile.svg' },
-          { label: 'Travail en méthodologie agile (sprints, tickets, priorisation).', icon: '/icons/agile.svg' }
+          { label: 'Analyse d’incidents basée sur logs et reproduction contrôlée.', icon: '' },
+          { label: 'Debug pas à pas sur code legacy.', icon: '' },
+          { label: 'Corrections ciblées pour limiter l’impact global.', icon: '' },
+          { label: 'Développement incrémental de fonctionnalités.', icon: '' },
+          { label: 'Respect strict des processus de livraison.', icon: '' },
+          { label: 'Travail en méthodologie agile (sprints, tickets, priorisation).', icon: '' }
         ]
       }
     },
@@ -279,9 +279,9 @@ const Experiences = () => {
       languages: {
         type: 'tags',
         items: [
-          { label: 'C# .NET.', icon: '/icons/react.svg' },
-          { label: 'Scripts Inno Setup (Pascal).', icon: '/icons/react.svg' },
-          { label: 'Custom Actions Windows Installer.', icon: '/icons/react.svg' }
+          { label: 'C# .NET.', icon: '' },
+          { label: 'Scripts Inno Setup (Pascal).', icon: '' },
+          { label: 'Custom Actions Windows Installer.', icon: '' }
         ]
       },
       data: {
@@ -291,15 +291,15 @@ const Experiences = () => {
       tools: {
         type: 'tags',
         items: [
-          { label: 'Inno Setup.', icon: '/icons/git.svg' },
-          { label: 'Visual Studio.', icon: '/icons/git.svg' }
+          { label: 'Inno Setup.', icon: '' },
+          { label: 'Visual Studio.', icon: '' }
         ]
       },
       methods: {
         type: 'tags',
         items: [
-          { label: 'Développement orienté automatisation.', icon: '/icons/agile.svg' },
-          { label: 'Validation croisée en binôme.', icon: '/icons/agile.svg' }
+          { label: 'Développement orienté automatisation.', icon: '' },
+          { label: 'Validation croisée en binôme.', icon: '' }
         ]
       }
     },
@@ -330,7 +330,7 @@ const Experiences = () => {
       languages: {
         type: 'tags',
         items: [
-          { label: 'LabVIEW.', icon: '/icons/react.svg' }
+          { label: 'LabVIEW.', icon: '' }
         ]
       },
       data: {
@@ -344,7 +344,7 @@ const Experiences = () => {
       methods: {
         type: 'tags',
         items: [
-          { label: 'Tests fonctionnels avant remise en production.', icon: '/icons/agile.svg' }
+          { label: 'Tests fonctionnels avant remise en production.', icon: '' }
         ]
       }
     },
@@ -381,32 +381,32 @@ const Experiences = () => {
       languages: {
         type: 'tags',
         items: [
-          { label: 'Python.', icon: '/icons/react.svg' },
-          { label: 'PySide (interface graphique).', icon: '/icons/js.svg' },
-          { label: 'Logique de contrôle et règles métier.', icon: '/icons/css.svg' }
+          { label: 'Python.', icon: '' },
+          { label: 'PySide (interface graphique).', icon: '' },
+          { label: 'Logique de contrôle et règles métier.', icon: '' }
         ]
       },
       data: {
         type: 'tags',
         items: [
-          { label: 'Données de pointage.', icon: '/icons/api.svg' },
-          { label: 'Données de géolocalisation.', icon: '/icons/api.svg' },
-          { label: 'Données utilisateurs et périodes.', icon: '/icons/api.svg' },
-          { label: 'Résultats d’analyses et rapports d’anomalies.', icon: '/icons/api.svg' },
+          { label: 'Données de pointage.', icon: '' },
+          { label: 'Données de géolocalisation.', icon: '' },
+          { label: 'Données utilisateurs et périodes.', icon: '' },
+          { label: 'Résultats d’analyses et rapports d’anomalies.', icon: '' },
         ]
       },
       tools: {
         type: 'tags',
         items: [
-          { label: 'Visual Studio Code.', icon: '/icons/git.svg' }
+          { label: 'Visual Studio Code.', icon: '' }
         ]
       },
       methods: {
         type: 'tags',
         items: [
-          { label: 'Approche full-stack orientée besoin métier.', icon: '/icons/agile.svg' },
-          { label: 'Définition de règles de cohérence explicites.', icon: '/icons/agile.svg' },
-          { label: 'Tests fonctionnels et recette utilisateur.', icon: '/icons/agile.svg' }
+          { label: 'Approche full-stack orientée besoin métier.', icon: '' },
+          { label: 'Définition de règles de cohérence explicites.', icon: '' },
+          { label: 'Tests fonctionnels et recette utilisateur.', icon: '' }
         ]
       }
     },
@@ -448,38 +448,38 @@ const Experiences = () => {
       languages: {
         type: 'tags',
         items: [
-          { label: 'Python pour l’analyse de données et le machine learning.', icon: '/icons/react.svg' },
-          { label: 'Algorithmes d’anomaly detection (Local Outlier Factor).', icon: '/icons/js.svg' },
-          { label: 'Notions avancées de machine learning non supervisé.', icon: '/icons/css.svg' },
-          { label: 'Compréhension des systèmes industriels et capteurs.', icon: '/icons/css.svg' },
-          { label: 'Java / C++ pour intégration et interaction avec systèmes existants.', icon: '/icons/css.svg' }
+          { label: 'Python pour l’analyse de données et le machine learning.', icon: '' },
+          { label: 'Algorithmes d’anomaly detection (Local Outlier Factor).', icon: '' },
+          { label: 'Notions avancées de machine learning non supervisé.', icon: '' },
+          { label: 'Compréhension des systèmes industriels et capteurs.', icon: '' },
+          { label: 'Java / C++ pour intégration et interaction avec systèmes existants.', icon: '' }
         ]
       },
       data: {
         type: 'tags',
         items: [
-          { label: 'Données capteurs industrielles (pression, débit, temps, cycles).', icon: '/icons/api.svg' },
-          { label: 'Données de production non labellisées.', icon: '/icons/api.svg' },
-          { label: 'Indicateurs de performance machine.', icon: '/icons/api.svg' },
-          { label: 'Résultats de détection et scores d’anomalies.', icon: '/icons/api.svg' },
+          { label: 'Données capteurs industrielles (pression, débit, temps, cycles).', icon: '' },
+          { label: 'Données de production non labellisées.', icon: '' },
+          { label: 'Indicateurs de performance machine.', icon: '' },
+          { label: 'Résultats de détection et scores d’anomalies.', icon: '' },
         ]
       },
       tools: {
         type: 'tags',
         items: [
-          { label: 'ThingWorx (dashboards, monitoring industriel).', icon: '/icons/git.svg' },
-          { label: 'Environnements industriels Volvo.', icon: '/icons/git.svg' },
-          { label: 'Outils de visualisation et d’analyse exploratoire.', icon: '/icons/git.svg' },
-          { label: 'Systèmes de versioning et partage inter-équipes.', icon: '/icons/git.svg' },
+          { label: 'ThingWorx (dashboards, monitoring industriel).', icon: '' },
+          { label: 'Environnements industriels Volvo.', icon: '' },
+          { label: 'Outils de visualisation et d’analyse exploratoire.', icon: '' },
+          { label: 'Systèmes de versioning et partage inter-équipes.', icon: '' },
         ]
       },
       methods: {
         type: 'tags',
         items: [
-          { label: 'Nettoyage, normalisation et sélection de features.', icon: '/icons/agile.svg' },
-          { label: 'Validation métier des résultats avec les équipes terrain.', icon: '/icons/agile.svg' },
-          { label: 'Intégration progressive des indicateurs dans les dashboards.', icon: '/icons/agile.svg' },
-          { label: 'Itérations continues pour réduire les faux positifs.', icon: '/icons/agile.svg' },
+          { label: 'Nettoyage, normalisation et sélection de features.', icon: '' },
+          { label: 'Validation métier des résultats avec les équipes terrain.', icon: '' },
+          { label: 'Intégration progressive des indicateurs dans les dashboards.', icon: '' },
+          { label: 'Itérations continues pour réduire les faux positifs.', icon: '' },
         ]
       }
     },

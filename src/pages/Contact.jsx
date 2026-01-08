@@ -5,43 +5,27 @@ import Card from '../card/card.jsx';
 const cardData = [
   {
     id: 1,
-    photo: "/photo1.jpg",
-    name: "Alice",
-    profession: "Développeuse",
-    text: "Texte 1",
-    link: "https://www.example1.com"
+    photo: "asset/Bernard.jpg",
+    name: "Bernard",
+    profession: "Développeur",
+    text: "Kévin est un passionné de technique, et cela se ressent dans son travail. Il fait preuve de professionnalisme...",
+    link: "https://www.linkedin.com/in/kevin-thiry-5720a4209/details/recommendations/?detailScreenTabIndex=0"
   },
   {
     id: 2,
-    photo: "/photo2.jpg",
-    name: "Bob",
-    profession: "Designer",
-    text: "Texte 2",
-    link: "https://www.example1.com"
+    photo: "asset/Olivier.jpg",
+    name: "Olivier",
+    profession: "Directeur de production",
+    text: "Kevin est un professionnel doté de grandes qualités humaines et relationnelles. Sa capacité...",
+    link: "https://www.linkedin.com/in/kevin-thiry-5720a4209/details/recommendations/?detailScreenTabIndex=0"
   },
   {
     id: 3,
-    photo: "/photo3.jpg",
-    name: "Charlie",
-    profession: "Chef de projet",
-    text: "Texte 3",
-    link: "https://www.example1.com"
-  },
-  {
-    id: 4,
-    photo: "/photo4.jpg",
-    name: "David",
-    profession: "Marketing",
-    text: "Texte 4",
-    link: "https://www.example1.com"
-  },
-  {
-    id: 5,
-    photo: "/photo4.jpg",
-    name: "Franck",
-    profession: "Cuisinier",
-    text: "Texte 5",
-    link: "https://www.example1.com"
+    photo: "asset/Ahmed.jpg",
+    name: "Ahmed",
+    profession: "Ingénieur SCADA",
+    text: "J'ai eu l'occasion de travailler avec Kevin Thiry dans deux contextes différents. En 2024, quand Kevin était ingénieur logiciel...",
+    link: "https://www.linkedin.com/in/kevin-thiry-5720a4209/details/recommendations/?detailScreenTabIndex=0"
   },
 ];
 
