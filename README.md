@@ -33,7 +33,6 @@ Il sert de portfolio interactif pour mes candidatures, mes contacts pro et mes o
 
 ## 🖼 Preview
 
-> Aperçu rapide du site (Live Demo ci-dessus)
 https://github.com/user-attachments/assets/3735c0ec-b975-4847-85e0-c9cf1973e6dc
 
 
