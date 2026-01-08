@@ -79,20 +79,6 @@ const Contact = () => {
               <a href="https://github.com/Kevin-THIRY/WarOfTime.git" target="_blank" rel="noopener noreferrer" className="bottom-button">Repo git</a>
             </div>
           </div>
-
-          <div className="h-box">
-            {/* Sous-bloc 1 : image + texte horizontal */}
-            <div className="top-box">
-              <img src="/asset/logo_fluppy.jpg" alt="Exemple" className="top-image" />
-              <span className="top-text">Fluppy</span>
-            </div>
-
-            {/* Sous-bloc 2 : 2 textes verticaux */}
-            <div className="bottom-box">
-              <p>Ancien projet de jeu</p>
-              <a href="https://github.com/Kevin-THIRY/FluppyProj.git" target="_blank" rel="noopener noreferrer" className="bottom-button">Repo git</a>
-            </div>
-          </div>
         </div>
 
         {/* BOX 3 */}
