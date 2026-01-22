@@ -16,6 +16,7 @@ body {
   margin: 0;
   padding: 0;
   padding-top: var(--header-height); /* espace pour header fixé */
+  font-family: 'Space Grotesk', system-ui, sans-serif;
 }
 
 #root {

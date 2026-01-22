@@ -11,14 +11,6 @@ const Home = () => {
         </div>
 
         <div className="home-right">
-          {/* <p className="home-summary">
-            Ingénieur développement logiciel avec expérience en industrie, robotique et data, intervenant sur des projets à forts enjeux techniques.
-            Compétent sur l’ensemble du cycle de vie logiciel : analyse fonctionnelle, conception, développement, intégration, tests et mise en production.
-            Expérience confirmée en Python, C/C++, C# .NET, SQL Server, ainsi qu’en vision industrielle, machine learning et systèmes industriels.
-            Habitué aux environnements contraints (production, sécurité, systèmes critiques), au travail en équipe pluridisciplinaire et à l’autonomie technique.
-            Capable de développer des solutions robustes, maintenables et orientées performance, en lien direct avec les besoins métier et industriels.
-          </p> */}
-
           <p className="home-summary">
             <strong>Ingénieur développement logiciel</strong> avec expérience en <u>industrie</u>, <u>robotique</u> et <u>data</u>, intervenant sur des projets à <strong>forts enjeux techniques</strong>.
             <br /><br />

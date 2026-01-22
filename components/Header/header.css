@@ -1,7 +1,143 @@
 :root {
-  --header-bg: #0b3d91;      /* bleu principal */
-  --header-bg-dark: #072a63; /* bleu profond */
-  --header-accent: #4da3ff;
+  /* ===== SURFACES ===== */
+  --bg-main: #ffffff;                    /* Fond principal des pages */
+  --bg-card: rgba(0, 0, 0, 0.03);        /* Fond des cartes / boxes */
+  --bg-glass: rgba(255, 255, 255, 0.6);  /* Fond glass / overlays clairs */
+  --bg-overlay: rgba(0, 0, 0, 0.25);     /* Overlay semi-transparent */
+  --surface: rgba(0, 0, 0, 0.05);        /* Surfaces secondaires */
+  --surface-hover: rgba(0, 0, 0, 0.08);  /* Surfaces hover légères */
+  --surface-glass: rgba(255, 255, 255, 0.2);
+  --surface-glass-strong: rgba(255, 255, 255, 0.4);
+  --surface-glass-subtle: rgba(255, 255, 255, 0.1);
+
+  /* ===== TEXT ===== */
+  --text-main: #000000;          /* Texte principal */
+  --text-secondary: #475569;     /* Texte secondaire */
+  --text-strong: #64748b;        /* Texte fort / titres secondaires */
+  --text-muted: #64748b;         /* Texte plus discret */
+  --text-inverse: #fffffff5;       /* Texte clair sur fond sombre */
+
+  /* ===== BORDERS ===== */
+  --border: rgba(0, 0, 0, 0.15);
+  --border-main: rgba(0, 0, 0, 0.15);
+  --border-soft: rgba(0, 0, 0, 0.08);
+  --border-accent: rgba(11, 61, 145, 0.35);
+
+  /* ===== ACCENTS ===== */
+  --accent-main: #0b3d91;        /* Couleur principale (liens, boutons, hover) */
+  --accent-soft: rgba(4, 9, 19, 0.774);
+  --accent-hover: rgba(11, 61, 145, 0.12);
+
+  /* ===== HEADER ===== */
+  --header-bg: #3467be;
+  --header-bg-dark: #17458f;
+  --header-text: #ffffff;
+
+  /* ===== SHADOWS ===== */
+  --shadow-xs: 0 2px 8px rgba(0,0,0,0.2);
+  --shadow-soft: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-medium: 0 6px 18px rgba(0,0,0,0.15);
+
+  /* ===== TIMELINE ===== */
+  --timeline-line: rgba(0, 0, 0, 0.08);
+  --timeline-point: rgba(11, 61, 145, 0.65);
+  --timeline-glow: rgba(11, 61, 145, 0.3);
+
+  /* ===== TAGS ===== */
+  --tag-bg: rgba(11, 61, 145, 0.08);
+  --tag-bg-hover: rgba(11, 61, 145, 0.12);
+
+  /* ===== BUTTONS ===== */
+  --button-bg: #0b3d91;
+  --button-text: #ffffff;
+  --button-bg-hover: #0056b3;
+
+  /* ===== CARDS ===== */
+  --card: rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="dark"] {
+  --bg-main: #1a243b;
+  --bg-card: rgba(255, 255, 255, 0.04);
+  --bg-glass: #0b0f19;
+  --bg-overlay: #0b0f19;
+  --overlay-bg: rgba(0, 0, 0, 0.25);
+  --surface: rgba(255, 255, 255, 0.05);
+  --surface-hover: rgba(255, 255, 255, 0.08);
+  --surface-glass: rgba(20, 20, 30, 0.5);
+  --surface-glass-strong: rgba(20, 20, 30, 0.7);
+  --surface-glass-subtle: rgba(20, 20, 30, 0.3);
+
+  --text-main: #ffffff;
+  --text-secondary: #cbd5e1;
+  --text-strong: #94a3b8;
+  --text-muted: #64748b;
+  --text-inverse: #ffffff;
+
+  --border: rgba(255, 255, 255, 0.15);
+  --border-main: rgba(255, 255, 255, 0.15);
+  --border-soft: rgba(255, 255, 255, 0.08);
+  --border-accent: rgba(120, 140, 255, 0.4);
+
+  --accent-main: #5b7cff;
+  --accent-soft: rgba(219, 226, 255, 0.836);
+  --accent-hover: rgba(91, 124, 255, 0.18);
+
+  --header-bg: #0b3d91;
+  --header-bg-dark: #00060f;
+  --header-text: #ffffff;
+
+  --shadow-xs: 0 2px 8px rgba(0,0,0,0.2);
+  --shadow-soft: 0 4px 14px rgba(0,0,0,0.4);
+  --shadow-medium: 0 8px 22px rgba(0,0,0,0.6);
+
+  --timeline-line: rgba(255, 255, 255, 0.2);
+  --timeline-point: rgba(91, 124, 255, 0.55);
+  --timeline-glow: rgba(91, 124, 255, 0.3);
+
+  --tag-bg: rgba(11, 61, 145, 0.08);
+  --tag-bg-hover: rgba(11, 61, 145, 0.12);
+
+  --button-bg: #0b3d91;
+  --button-text: #ffffff;
+  --button-bg-hover: #0056b3;
+
+  --card: rgba(255, 255, 255, 0.03);
+}
+
+
+.theme-toggle {
+  position: relative;
+  width: 60px;
+  height: 30px;
+  background: var(--surface-glass);
+  border-radius: 30px;
+  border: 1px solid var(--border-soft);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.3s, border 0.3s;
+}
+
+.theme-toggle .toggle-knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 24px;
+  height: 24px;
+  background: var(--button-bg);
+  border-radius: 50%;
+  transition: left 0.3s, background 0.3s;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.theme-toggle.dark {
+  background: var(--bg-main);
+  border: 1px solid var(--border-accent);
+}
+
+.theme-toggle.dark .toggle-knob {
+  left: 32px;
+  background: var(--accent-main);
 }
 
 /* ================= HEADER ================= */
@@ -23,7 +159,7 @@
   background: linear-gradient(180deg, var(--header-bg), var(--header-bg-dark));
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
-  box-shadow: 0 6px 22px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 22px var(--shadow-medium);
 }
 
 /* ================= PROFILE (PHOTO + TEXTE) ================= */
@@ -33,7 +169,7 @@
   align-items: center;
   gap: 1rem;
   flex-shrink: 0;
-  transform: translateX(clamp(20vw, -3vw, -1.5vw));
+  transform: translateX(clamp(-20vw, -3vw, -1.5vw));
 }
 
 .header-photo {
@@ -41,8 +177,8 @@
   height: 50px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid rgba(255,255,255,0.9);
-  box-shadow: 0 8px 18px rgba(0,0,0,0.35);
+  border: 2px solid var(--text-inverse);
+  box-shadow: 0 8px 18px var(--shadow-medium);
   pointer-events: none;
   user-select: none;
 }
@@ -56,7 +192,7 @@
 .header-name {
   font-weight: 800;
   font-size: 1.05rem;
-  color: #ffffff;
+  color: var(--header-text);
   letter-spacing: 0.3px;
 }
 
@@ -74,8 +210,8 @@
 }
 
 .header-tab-box {
-  background: rgba(255, 255, 255, 0.95);
-  color: var(--header-bg);
+  background: var(--bg-main);
+  color: var(--accent-main);
 
   padding: 0.6rem 1.6rem;
   border-radius: 999px;
@@ -84,8 +220,8 @@
   font-size: 0.95rem;
   letter-spacing: 0.3px;
 
-  border: 1px solid rgba(11,61,145,0.18);
-  box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+  border: 1px solid var(--border-accent);
+  box-shadow: 0 6px 14px var(--shadow-soft);
 
   text-decoration: none;
   white-space: nowrap;
@@ -96,13 +232,13 @@
 
 .header-tab-box:hover {
   transform: translateY(-2px);
-  background: #ffffff;
-  box-shadow: 0 12px 26px rgba(0,0,0,0.18);
+  background: var(--bg-main);
+  box-shadow: 0 12px 26px var(--shadow-medium);
 }
 
 .header-tab-box:active {
   transform: translateY(0);
-  box-shadow: 0 5px 12px rgba(0,0,0,0.2);
+  box-shadow: 0 5px 12px var(--shadow-soft);
 }
 
 /* ================= RESPONSIVE ================= */

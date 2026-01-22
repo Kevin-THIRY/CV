@@ -12,7 +12,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.25); /* plus transparent que 0.45 */
+  background: var(--overlay-bg);
   z-index: 0;
   transition: background 0.5s ease-in-out; /* transition si tu changes l'opacité aussi */
 }
@@ -57,7 +57,7 @@
   align-items: center;
   gap: 1rem;
   padding: 1rem;
-  background: rgba(255, 255, 255, 0.404); /* fond léger */
+  background: var(--surface-glass-subtle);
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(255, 255, 255, 0);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -75,7 +75,7 @@
   margin: 0 0 0.3rem 0;
   font-size: 1.15rem;
   font-weight: 500;
-  color: #000000;
+  color: var(--accent-soft);
 }
 
 .timeline {
@@ -93,10 +93,10 @@
   left: 10px;
   width: 2px;
   height: 100%;
-  background: rgba(255, 255, 255, 0.25); /* ligne glass */
+  background: var(--timeline-line);
   backdrop-filter: blur(6px);
   border-radius: 1px;
-  box-shadow: 0 0 8px rgba(11, 61, 145, 0.3);
+  box-shadow: 0 0 8px var(--timeline-glow);
 }
 
 .timeline-item {
@@ -112,13 +112,13 @@
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.623); /* point glass */
+  background: var(--timeline-point);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   position: absolute;
   left: -7px;
   top: 0;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.226);
+  box-shadow: 0 0 10px var(--shadow-soft);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
@@ -126,10 +126,10 @@
 .timeline-content {
   cursor: pointer;
   margin-left: 2rem;
-  background: #f5f5f5;
+  background: var(--surface-glass-strong);
   padding: 0.6rem 1rem;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 12px var(--shadow-xs);
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -137,15 +137,15 @@
 }
 
 .timeline-content:hover {
-  background: rgba(11, 61, 145, 0.1);
+  background: var(--surface-hover);
   transform: translateX(10px);
 }
 
 .timeline-content.active {
   font-weight: 700;
-  color: #fff;
-  background: #0b3d91;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  color: var(--text-invert);
+  background: var(--accent-main);
+  box-shadow: 0 6px 18px var(--shadow-medium);
 }
 
 .timeline-content img {
@@ -169,19 +169,19 @@
   margin: 0 0 0.2rem 0;
   font-size: 1rem;
   font-weight: 700;
-  color: #0b3d91;
+  color: var(--accent-soft);
 }
 
 .timeline-content-text p {
   margin: 0;
   font-size: 0.9rem;
-  color: #555;
+  color: var(--text-main);
   line-height: 1.4;
 }
 
 /* Sous-blocs verticaux */
 .right-subblock {
-  background: rgba(255, 255, 255, 0.65); /* semi-transparent pour voir l'image */
+  background: var(--surface-glass-strong);
   backdrop-filter: blur(10px);
   padding: 1.2rem;
   border-radius: 16px;
@@ -194,14 +194,14 @@
   padding: 0.6rem 0; /* plus léger, plus d'air */
   border-radius: 10px;
   font-size: 0.95rem;
-  color: #1a1a1a;
+  color: var(--text-main);
   transition: transform 0.25s ease, color 0.25s ease;
   /* plus de fond distinct, juste du texte sur le fond transparent du parent */
 }
 
 .vertical-block:hover {
   transform: translateY(-2px);
-  color: #0b3d91; /* léger effet hover */
+  color: var(--accent-main);
 }
 
 .vertical-block h4 {
@@ -210,33 +210,41 @@
   text-transform: uppercase;
   letter-spacing: 0.06em;
   font-weight: 600;
-  color: #0b3d91;
+  color: var(--accent-main);
 }
 
-.inline-bullets {
+.paragraph-bullets {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem 1rem;
-  padding: 0;
-  margin: 0.3rem 0 0;
-  list-style: none;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 16px;
+
+  background: var(--surface-glass-subtle);
+
+  border: 1px solid var(--border);
+  border-radius: 8px;
+
+  font-size: 0.94rem;
 }
 
-.inline-bullets li {
-  position: relative;
-  padding-left: 1.2rem;
-  font-size: 0.85rem;
-  line-height: 1.4;
-  color: #333;
+/* Texte */
+.paragraph-bullets p {
+  margin: 0;
+  line-height: 1.3;
+  color: var(--text-main);
 }
 
-.inline-bullets li::before {
-  content: '•';
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: #0b3d91;
-  font-size: 1.1em;
+/* Gras */
+.paragraph-bullets strong {
+  font-weight: 600;
+  color: var(--text-invert);
+}
+
+/* Souligné moderne */
+.paragraph-bullets u {
+  text-decoration: none;
+  border-bottom: 2px solid var(--accent-main);
+  padding-bottom: 1px;
 }
 
 .tag-list {
@@ -251,15 +259,15 @@
   align-items: center;
   gap: 4px;
   padding: 0.3rem 0.5rem;
-  background: rgba(11, 61, 145, 0.08);
   border-radius: 16px;
   font-size: 0.75rem;
-  color: #0b3d91;
+  background: var(--tag-bg);
+  color: var(--accent-main);
   transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .tag:hover {
-  background: rgba(11, 61, 145, 0.12);
+  background: var(--tag-bg-hover);
   transform: translateY(-1px);
 }
 
@@ -302,7 +310,7 @@
     margin: 0 0 0rem 0;
     font-size: 0.75rem;
     font-weight: 700;
-    color: #000000;
+    color: var(--text-strong);
   }
 
   .timeline {
@@ -329,5 +337,13 @@
   .vertical-block {
     font-size: 0.9rem;
     padding: 0.6rem 0.8rem;
+  }
+
+  .paragraph-bullets {
+    padding: 12px;
+    gap: 12px;
+  }
+  .paragraph-bullets p {
+    font-size: 0.95rem;
   }
 }

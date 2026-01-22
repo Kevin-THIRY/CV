@@ -2,6 +2,7 @@
   min-height: 100vh;
   display: flex;
   justify-content: center;
+  background: var(--bg-main);
 }
 
 .main-box {
@@ -9,6 +10,7 @@
   max-width: 66.666%;
   display: flex;
   flex-direction: column;
+  background: var(--bg-main);
 }
 
 /* Boîtes principales */
@@ -24,6 +26,7 @@
   margin: 0;
   padding: 3%;
   padding-left: 13%;
+  color: var(--text-strong);
 }
 
 /* BOX 2 */
@@ -39,9 +42,9 @@
 }
 
 .h-box {
-  border: 1px solid #ddd;         /* moins brutal que #000 */
+  border: 1px solid var(--border);
   border-radius: 12px;            /* coins arrondis */
-  box-shadow: 0 4px 12px rgba(68, 68, 68, 0.548); /* ombre douce */
+  box-shadow: 0 4px 12px var(--shadow-soft);
   display: flex;
   flex-direction: column;
   padding: 8px;
@@ -53,7 +56,7 @@
   background-color: #fff;         /* fond clair moderne */
   overflow: hidden;               /* clips les éléments absolus */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  background-color: #ffffff;
+  background-color: var(--surface);
 }
 
 .h-box::before {
@@ -84,7 +87,7 @@
 .top-text {
   font-size: clamp(0.85rem, 1.4vw, 1.1rem);
   font-weight: 400;
-  color: #333;
+  color: var(--text-muted);
 }
 
 .bottom-box {
@@ -101,7 +104,7 @@
   font-size: clamp(1rem, 1.1vw, 0.95rem);
   font-weight: 100;
   text-align: left;
-  color: #555;
+  color: var(--text-main);
   line-height: 1.1;
 }
 
@@ -109,19 +112,21 @@
   display: inline-block;
   padding: 0.35em 0.7em;
   font-size: clamp(1rem, 0.9vw, 0.85rem);
-  background: linear-gradient(135deg, #001f3f, #00115c);
-  color: #fff;
+  /* background: linear-gradient(135deg, #001f3f, #00115c); */
+  background: var(--button-bg);
+  color: var(--button-text);
   text-decoration: none;
   border-radius: 6px;
   text-align: center;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px var(--shadow-xs);
 }
 
 .bottom-button:hover {
-  background: linear-gradient(135deg, #0056b3, #0088cc);
+  /* background: linear-gradient(135deg, #0056b3, #0088cc); */
+  background: var(--button-bg-hover);
   transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 10px var(--shadow-soft);
 }
 
 /* BOX 3 */
@@ -144,7 +149,7 @@
   max-width: calc(100% / 3);
 
   aspect-ratio: 1 / 1;
-  border: 1px solid #000;
+  border: 1px solid var(--border);
 
   display: flex;
   align-items: center;

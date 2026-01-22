@@ -7,13 +7,27 @@ const VerticalBlock = ({ title, block }) => {
   return (
     <div className={`vertical-block ${block.type}`}>
       <h4>{title}</h4>
-
+      
       {block.type === 'bullets-inline' && (
-        <ul className="inline-bullets">
-          {block.items.map((item, i) => (
-            <li key={i}>{item}</li>
-          ))}
-        </ul>
+        <div className="paragraph-bullets">
+          {block.items.map((item, i) => {
+            // On gère *gras* et ~souligné~
+            const parts = item.split(/(\*.*?\*|~.*?~)/g);
+
+            return (
+              <p key={i}>
+                {parts.map((part, idx) => {
+                  if (part.startsWith('*') && part.endsWith('*')) {
+                    return <strong key={idx}>{part.slice(1, -1)}</strong>;
+                  } else if (part.startsWith('~') && part.endsWith('~')) {
+                    return <u key={idx}>{part.slice(1, -1)}</u>;
+                  }
+                  return part;
+                })}
+              </p>
+            );
+          })}
+        </div>
       )}
 
       {block.type === 'tags' && (
@@ -37,8 +51,8 @@ const Experiences = () => {
       contexte: {
         type: 'bullets-inline',
         items: [
-          'Conception d’un jeu vidéo sous unity',
-          'Projet personnel mené en totale autonomie, sans équipe ni encadrement.',
+          'Conception d’un *jeu vidéo* sous unity',
+          'Projet personnel ~mené en totale autonomie~, sans équipe ni encadrement.',
           'Objectif : maîtriser l’ensemble de la chaîne de production d’un jeu 3D temps réel.',
           'Développement sur temps long, avec itérations successives.',
           'Ciblage PC, contraintes temps réel classiques (FPS, mémoire).',
