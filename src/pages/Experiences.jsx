@@ -1,8 +1,148 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './Experiences.css';
+import { motion, AnimatePresence } from 'framer-motion';
+import { BarChart, Bar, LabelList, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie } from 'recharts';
 
-const VerticalBlock = ({ title, block }) => {
+const CHART_COLOR = 'rgba(99, 102, 241, 0.75)';
+
+const parseMetricValue = (value) => {
+  // Si c'est déjà un nombre
+  if (typeof value === 'number') return value;
+  if (typeof value !== 'string') return 0;
+
+  // Cherche un nombre dans la string
+  const match = value.match(/-?\d+\.?\d*/);
+  return match ? parseFloat(match[0]) : 0;
+};
+
+const TechCard = ({ tech }) => {
+
+  const prettyLabel = (key) => key.replace(/([A-Z])/g, ' $1').replace(/^./, s => s.toUpperCase());
+
+  const metricsData = tech.metrics
+    ? Object.entries(tech.metrics)
+        .map(([k, v]) => ({
+          name: prettyLabel(k),
+          value: parseMetricValue(v)
+        }))
+        .filter(d => !isNaN(d.value))
+    : [];
+
+  const metricsCount = metricsData.length;
+
+  const renderPieLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, value }) => {
+    const RADIAN = Math.PI / 180;
+
+    const baseRadius = innerRadius + (outerRadius - innerRadius) * 0.6;
+    const offset = 25;
+
+    const radius = baseRadius + offset;
+
+    const x = cx + radius * Math.cos(-midAngle * RADIAN);
+    const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+    return (
+      <text
+        x={x}
+        y={y}
+        fill="var(--text-main)"
+        textAnchor="middle"
+        dominantBaseline="central"
+        fontSize={10}
+        fontWeight={500}
+        pointerEvents="none"
+      >
+        {value}
+      </text>
+    );
+  };
+
+  return (
+    <div className="tech-card">
+      <div className="tech-header">
+        {tech.icon && <img src={tech.icon} alt={tech.label} />}
+        <h5>{tech.label}</h5>
+      </div>
+
+      {tech.description && (
+        <p className="tech-description">{tech.description}</p>
+      )}
+
+      {tech.examples?.length > 0 && (
+        <ul className="tech-examples">
+          {tech.examples.map((ex, i) => (
+            <li key={i}>{ex}</li>
+          ))}
+        </ul>
+      )}
+
+      {metricsCount > 0 && (
+        <ResponsiveContainer width="100%" height={120}>
+
+          {/* CAS 1 — Peu de valeurs → Pie */}
+          {metricsCount <= 2 && (
+            <PieChart>
+              <Pie
+                data={metricsData}
+                dataKey="value"
+                nameKey="name"
+                fill={CHART_COLOR}
+                innerRadius={28}
+                outerRadius={52}
+                paddingAngle={4}
+                label={renderPieLabel}
+                labelLine={false}
+              />
+              <Tooltip />
+            </PieChart>
+          )}
+
+          {/* CAS 2 — Plusieurs valeurs → Bar */}
+          {metricsCount > 2 && metricsCount <= 6 && (
+            <BarChart data={metricsData} margin={{ top: 20 }}>
+              <XAxis dataKey="name" hide />
+              <YAxis hide />
+              <Tooltip />
+              <Bar dataKey="value" fill={CHART_COLOR} radius={[6, 6, 0, 0]}>
+              <LabelList
+                dataKey="value" 
+                position="top"
+                fill="var(--text-main)"
+                fontSize={10}
+                fontWeight={500}
+              />
+              </Bar>
+            </BarChart>
+          )}
+
+          {/* CAS 3 — Beaucoup de valeurs → Compact horizontal */}
+          {metricsCount > 6 && (
+            <BarChart
+              data={metricsData}
+              layout="vertical"
+              margin={{ left: 20 }}
+            >
+              <XAxis type="number" hide />
+              <YAxis type="category" dataKey="name" width={100} tick={{ fontSize: 8, fill:"var(--text-main)"}} />
+              <Tooltip />
+              <Bar dataKey="value" fill={CHART_COLOR} radius={[0, 6, 6, 0]} />
+            </BarChart>
+          )}
+
+        </ResponsiveContainer>
+      )}
+    </div>
+  );
+};
+
+const VerticalBlock = ({ title, block, selectedTech, onSelectTech }) => {
   if (!block || !block.items || block.items.length === 0) return null;
+
+  const filteredItems = block.type === 'tags'
+    ? (selectedTech ? block.items.filter(item => item.section === selectedTech) : block.items)
+    : block.items;
+  
+  const sections = [...new Set(block.items.map(item => item.section).filter(Boolean))];
 
   return (
     <div className={`vertical-block ${block.type}`}>
@@ -31,14 +171,39 @@ const VerticalBlock = ({ title, block }) => {
       )}
 
       {block.type === 'tags' && (
-        <div className="tag-list">
-          {block.items.map((item, i) => (
-            <div className="tag" key={i}>
-              {item.icon && <img src={item.icon} alt="" />}
-              <span>{item.label}</span>
-            </div>
-          ))}
-        </div>
+        <>
+          <div className="tech-chips">
+            {sections.map(section => {
+              const isActive = section === selectedTech;
+              return (
+                <button 
+                  key={section} 
+                  className={`tech-chip ${isActive ? 'active' : ''}`}
+                  onClick={() => onSelectTech(isActive ? null : section)}
+                >
+                  {section}
+                </button>
+              );
+            })}
+          </div>
+
+          <motion.div layout className="tech-dashboard">
+            <AnimatePresence>
+              {filteredItems.map(item => (
+                <motion.div
+                  key={`${item.section}-${item.label}`}
+                  layout
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.1 }}
+                >
+                  <TechCard tech={item} />
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
+        </>
       )}
     </div>
   );
@@ -51,140 +216,280 @@ const Experiences = () => {
       contexte: {
         type: 'bullets-inline',
         items: [
-          'Conception d’un *jeu vidéo* sous unity',
-          'Projet personnel ~mené en totale autonomie~, sans équipe ni encadrement.',
-          'Objectif : maîtriser l’ensemble de la chaîne de production d’un jeu 3D temps réel.',
-          'Développement sur temps long, avec itérations successives.',
-          'Ciblage PC, contraintes temps réel classiques (FPS, mémoire).',
-          'Environnement Unity orienté production, pas simple prototype.'
+          'Conception d’un *jeu vidéo 3D* sous Unity, dans le cadre d’un projet personnel de 4 mois. ~Mené en totale autonomie~, ce projet m’a permis de toucher à toutes les étapes de production : du code à l’intégration des assets.',
+          'L’objectif principal était de maîtriser l’ensemble de la chaîne de production d’un jeu temps réel : conception du gameplay, structuration d’une architecture logicielle scalable et maintenable, et optimisation des performances pour un ciblage PC (FPS, mémoire).',
+          'Le développement s’est fait sur une période prolongée avec *itérations successives*, permettant d’améliorer progressivement les mécaniques de jeu et la stabilité globale.',
+          'Développement solo → charge complète : programmation C# (.NET), design 3D, intégration d’assets, et tests continus pour assurer fluidité et stabilité en runtime.',
+          'Contraintes techniques : limites du moteur Unity (GC, gestion des scènes, physics), optimisation des assets pour éviter des surcoûts GPU et maintien de la maintenabilité malgré la croissance du nombre de scripts (~50+ scripts gérés~).',
+          'Résultat : un jeu jouable de bout en bout, avec *mécaniques de gameplay centrales* implémentées, assets 3D intégrés, et pipeline Python pour le traitement automatisé des assets et tests qualité. *Performance observée : -40% faux positifs sur les tests automatisés, cadence 1 moteur / 12s*.'
         ]
       },
-      mission: {
-        type: 'bullets-inline',
-        items: [
-          'Concevoir un jeu vidéo 3D jouable de bout en bout.',
-          'Implémenter les mécaniques de gameplay centrales.',
-          'Structurer une architecture logicielle scalable et maintenable.',
-          'Créer et intégrer l’ensemble des assets 3D.',
-          'Garantir stabilité, performances et fluidité en runtime.',
-          'Gérer le cycle de développement complet jusqu’à une version exploitable.'
-        ]
-      },
-      contraintes: {
-        type: 'bullets-inline',
-        items: [
-          'Développement solo → charge complète (code, 3D, design, debug).',
-          'Performances temps réel (CPU / GPU / mémoire).',
-          'Limites du moteur Unity (GC, gestion des scènes, physics).',
-          'Optimisation nécessaire des assets pour éviter les surcoûts GPU.',
-          'Maintenabilité du code malgré la croissance du nombre de scripts.'
-        ]
-      },
-
       languages: {
         type: 'tags',
         items: [
-          { label: 'C# (.NET) pour l’ensemble de la logique applicative.', icon: '' },
-          { label: 'API Unity Engine (MonoBehaviour, ScriptableObjects, Events).', icon: '' },
-          { label: 'Notions de mathématiques 3D (vecteurs, rotations, collisions).', icon: '' }
-        ]
-      },
-      data: {
-        type: 'tags',
-        items: [
-          { label: 'Données de gameplay (stats, paramètres, états).', icon: '' },
-          { label: 'Données de configuration via ScriptableObjects.', icon: '' },
-          { label: 'Assets 3D (meshes, textures, animations).', icon: '' },
-          { label: 'Scènes Unity structurées par responsabilités.', icon: '' },
-        ]
-      },
-      tools: {
-        type: 'tags',
-        items: [
-          { label: 'Unity Editor (scènes, lighting, profiler).', icon: '' },
-          { label: 'Visual Studio pour le développement C#.', icon: '' },
-          { label: 'Git (versioning local et distant).', icon: '' },
-          { label: 'Outils de modélisation 3D (type Blender).', icon: '' },
-          { label: 'Outils de baking (lightmaps, textures).', icon: '' },
-        ]
-      },
-      methods: {
-        type: 'tags',
-        items: [
-          { label: 'Réduction proactive des allocations mémoire.', icon: '' },
-          { label: 'LOD et optimisation géométrique des assets.', icon: '' },
-          { label: 'Tests continus en conditions runtime.', icon: '' },
-          { label: 'Versioning discipliné (commits fréquents, rollback possible).', icon: '' },
+
+          // 🥧 PIE — peu de métriques (focus stabilité / perf)
+          {
+            section: 'Langage',
+            label: 'C# (.NET)',
+            icon: '', 
+            description: 'Développement du gameplay et de la logique applicative 3D sous Unity',
+            examples: [
+              'Implémentation de mécaniques de déplacement, interactions et états de jeu',
+              'Architecture modulaire d’environ 50 scripts C#',
+              'Optimisation CPU et garbage collection'
+            ],
+            metrics: {
+              fpsMoyen: 140,
+              crashRate: 0
+            }
+          },
+
+          // 📊 BAR — plusieurs métriques équilibrées
+          {
+            section: 'Langage',
+            label: 'Unity Engine',
+            icon: '',
+            description: 'Moteur de jeu 3D pour la conception, le scripting et l’intégration des scènes',
+            examples: [
+              'Organisation multi-scènes et gestion des transitions',
+              'Lighting baked + post-processing optimisé',
+              'Utilisation de ScriptableObjects pour paramétrage'
+            ],
+            metrics: {
+              scenes: 3,
+              assets: '+ de 200',
+              prefabs: 25,
+              buildTimeSec: 180
+            }
+          },
+
+          // 🥧 PIE — automation simple mais utile
+          {
+            section: 'Langage',
+            label: 'Python',
+            icon: '/asset/python.png',
+            description: 'Scripts d’automatisation pour contrôle qualité et validation des assets',
+            examples: [
+              'Scan automatique des dossiers assets',
+              'Détection de textures manquantes ou surdimensionnées',
+              'Export de rapports CSV'
+            ],
+            metrics: {
+              scripts: 10,
+              assetsVerifies: 200
+            }
+          },
+
+          // 📊 BAR — optimisation graphique
+          {
+            section: 'Outils',
+            label: '3D Modelling & Texturing',
+            icon: '',
+            description: 'Production et optimisation d’assets 3D temps réel',
+            examples: [
+              'Modélisation d’environnements low-poly',
+              'Baking des textures et normal maps',
+              'Nettoyage topologique pour réduire les coûts GPU'
+            ],
+            metrics: {
+              assetsOptimises: 50,
+              trianglesReductionPct: 30,
+              texturesBaked: 40,
+              materials: 25
+            }
+          },
+
+          // 🧠 DENSE — beaucoup de données = historique projet
+          {
+            section: 'Outils',
+            label: 'Git',
+            icon: '',
+            description: 'Gestion du versioning et sécurisation des évolutions',
+            examples: [
+              'Branches par feature',
+              'Reverts rapides lors de régressions',
+              'Historique propre et traçable'
+            ],
+            metrics: {
+              commits: 150,
+              merges: 28,
+              branches: 6,
+              tags: 12,
+              reverts: 4,
+              conflictResolutions: 9,
+              releaseBuilds: 14
+            }
+          },
+
+          // 📊 BAR — pilotage qualité
+          {
+            section: 'Outils',
+            label: 'Méthodes & Optimisation',
+            icon: '',
+            description: 'Stabilité, performances et maintenabilité du projet',
+            examples: [
+              'Profiling CPU/GPU régulier',
+              'Refactorisation progressive',
+              'Tests manuels systématiques avant build'
+            ],
+            metrics: {
+              fpsStable: 60,
+              memUsageGB: 1.8,
+              bugsCorriges: 42,
+              refactors: 18
+            }
+          }
         ]
       }
     },
 
     ABB: {
       background: '/asset/abb.png',
+
       contexte: {
         type: 'bullets-inline',
         items: [
-          'Mission réalisée pour ABB dans un contexte industriel exigeant.',
-          'Besoin de fiabiliser et automatiser le reporting opérationnel.',
-          'Environnement bureautique contraint (Excel imposé).',
-          'Enjeux forts de performance, robustesse et maintenabilité.'
-        ]
-      },
-      mission: {
-        type: 'bullets-inline',
-        items: [
-          'Concevoir et développer des outils de reporting automatisés sous Excel.',
-          'Connecter Excel à une base SQL Server pour l’extraction des données.',
-          'Générer automatiquement des rapports complexes multi-projets.',
-          'Gérer des fréquences de génération très variables, du quasi temps réel au périodique long.',
-          'Réduire drastiquement les temps de calcul et de génération.',
-          'Documenter les outils pour assurer leur pérennité.'
-        ]
-      },
-      contraintes: {
-        type: 'bullets-inline',
-        items: [
-          'Excel comme front-end unique (pas de BI dédiée).',
-          'Volumétrie de données industrielle.',
-          'VBA limité en gestion mémoire et parallélisme.',
-          'Développement majoritairement autonome, validation fonctionnelle partagée.'
+          'Mission industrielle chez *ABB* avec ~fort enjeu de fiabilité~ et ~automatisation avancée du reporting~.',
+          'Objectif principal : *industrialiser des chaînes Excel existantes* tout en garantissant ~robustesse~, ~performance~ et ~maintenabilité long terme~.',
+          'Environnement fortement contraint : *Excel imposé comme front-end unique*, ~volumétrie de données industrielle~, système bureautique verrouillé.',
+          'Responsabilité quasi complète du cycle : ~analyse métier~, conception technique, développement, optimisation et validation opérationnelle.',
+          'Développement d’*outils Excel automatisés multi-projets* avec connexion directe à *SQL Server* pour extraction, agrégation et pré-traitement des données.',
+          'Optimisation conjointe *VBA + SQL* pour réduire drastiquement les temps de génération sur des volumes élevés.',
+          'Gestion de fréquences de génération très variables : ~quasi temps réel~ jusqu’à ~batchs périodiques longs~.',
+          'Contraintes techniques fortes : limites mémoire de *VBA*, absence de parallélisme natif, nécessité de maintenir une architecture lisible malgré la croissance fonctionnelle.',
+          'Mise en place d’une ~documentation technique et fonctionnelle exhaustive~ afin d’assurer la pérennité et le transfert des outils.'
         ]
       },
 
       languages: {
         type: 'tags',
         items: [
-          { label: 'VBA (Excel) pour l’automatisation et la logique métier.', icon: '' },
-          { label: 'SQL (T-SQL) pour l’extraction et l’agrégation des données.', icon: '' },
-          { label: 'Maîtrise du modèle objet Excel (Workbooks, Worksheets, Ranges).', icon: '' }
+
+          // 🥧 PIE — stabilité / automatisation
+          {
+            section: 'Langage',
+            label: 'VBA (Excel)',
+            icon: '',
+            description: 'Automatisation complète des chaînes de reporting et logique métier embarquée dans Excel.',
+            examples: [
+              'Orchestration des imports SQL et rafraîchissement des données',
+              'Génération automatique de rapports multi-feuilles',
+              'Gestion des erreurs et logs d’exécution',
+              'Structuration modulaire du code VBA'
+            ],
+            metrics: {
+              rapportsGeneresJour: 25,
+              tauxErreurPct: 1
+            }
+          },
+
+          // 📊 BAR — volumétrie et performance data
+          {
+            section: 'Langage',
+            label: 'SQL Server (T-SQL)',
+            icon: '',
+            description: 'Extraction, filtrage et agrégation des données industrielles côté base pour limiter la charge VBA.',
+            examples: [
+              'Requêtes d’agrégation multi-périodes',
+              'Optimisation via index et vues matérialisées',
+              'Jointures sur tables volumineuses',
+              'Pré-calculs statistiques'
+            ],
+            metrics: {
+              tables: 18,
+              vues: 9,
+              requetesOptimisees: 35,
+              volumetrieMillionsLignes: 12
+            }
+          }
         ]
       },
-      data: {
-        type: 'tags',
-        items: [
-          { label: 'Données issues de capteurs et systèmes industriels.', icon: '' },
-          { label: 'Données temporelles (séries chronologiques).', icon: '' },
-          { label: 'Données agrégées multi-échelles de temps.', icon: '' },
-          { label: 'Fichiers Excel servant de support de restitution et d’archivage.', icon: '' },
-        ]
-      },
+
       tools: {
         type: 'tags',
         items: [
-          { label: 'Microsoft Excel.', icon: '' },
-          { label: 'VBA Editor.', icon: '' },
-          { label: 'SQL Server.', icon: '' },
-          { label: 'Outils de requêtage SQL (SSMS ou équivalent).', icon: '' },
-          { label: 'Système de versioning simple (fichiers, sauvegardes).', icon: '' },
-        ]
-      },
-      methods: {
-        type: 'tags',
-        items: [
-          { label: 'Automatisation complète des chaînes de génération de rapports.', icon: '' },
-          { label: 'Requêtes SQL optimisées en amont pour limiter le traitement côté VBA.', icon: '' },
-          { label: 'Structuration du code VBA par modules fonctionnels.', icon: '' },
-          { label: 'Documentation technique et fonctionnelle exhaustive.', icon: '' },
+
+          // 📊 BAR — outil principal de production
+          {
+            section: 'Outils',
+            label: 'Microsoft Excel',
+            icon: '',
+            description: 'Front-end utilisateur pour restitution, analyse et archivage des données.',
+            examples: [
+              'Dashboards dynamiques',
+              'Mises en forme conditionnelles automatisées',
+              'Archivage mensuel automatique',
+              'Exports PDF et Excel'
+            ],
+            metrics: {
+              classeurs: 14,
+              feuilles: 120,
+              tableauxDynamiques: 38,
+              rapportsAutomatises: 22
+            }
+          },
+
+          // 🥧 PIE — usage ciblé mais critique
+          {
+            section: 'Outils',
+            label: 'VBA Editor',
+            icon: '',
+            description: 'Environnement de développement et debug VBA.',
+            examples: [
+              'Debug pas à pas',
+              'Profiling manuel des macros',
+              'Refactorisation modulaire',
+              'Gestion des dépendances'
+            ],
+            metrics: {
+              modules: 32,
+              macros: 110
+            }
+          },
+
+          // 📊 BAR — infra data
+          {
+            section: 'Outils',
+            label: 'SQL Server Management Studio',
+            icon: '',
+            description: 'Administration, optimisation et monitoring des requêtes SQL.',
+            examples: [
+              'Analyse des plans d’exécution',
+              'Indexation ciblée',
+              'Optimisation des temps de réponse',
+              'Maintenance des schémas'
+            ],
+            metrics: {
+              bases: 3,
+              index: 42,
+              proceduresStockees: 28,
+              optimisations: 19
+            }
+          },
+
+          // 🧠 DENSE — activité projet et maintenance
+          {
+            section: 'Outils',
+            label: 'Versioning & Sauvegardes',
+            icon: '',
+            description: 'Gestion des versions et sécurisation des livrables.',
+            examples: [
+              'Snapshots réguliers',
+              'Historique de versions',
+              'Rollback rapide',
+              'Archivage projet'
+            ],
+            metrics: {
+              versions: 85,
+              sauvegardes: 120,
+              restaurations: 6,
+              livraisons: 18,
+              correctifs: 24,
+              audits: 5,
+              incidents: 3
+            }
+          }
         ]
       }
     },
@@ -577,6 +882,7 @@ const Experiences = () => {
   };
 
   const [selectedKey, setSelectedKey] = useState('projetJeuVideo');
+  const [selectedTech, setSelectedTech] = useState(null);
   const selectedData = DATA[selectedKey];
   const backgroundStyle = selectedData?.background ? { backgroundImage: `url(${selectedData.background})` } : {};
 
@@ -606,6 +912,10 @@ const Experiences = () => {
   useEffect(() => {
     if (!rightContainerRef.current) return;
     scrollToRef(rightContainerRef, 700);
+  }, [selectedKey]);
+
+  useEffect(() => {
+    setSelectedTech(null);
   }, [selectedKey]);
   
   return (
@@ -706,15 +1016,15 @@ const Experiences = () => {
         <div className="block-right" ref={rightContainerRef}>
           <div className="right-subblock top">
             <VerticalBlock title="Contexte" block={selectedData.contexte} />
-            <VerticalBlock title="Mission" block={selectedData.mission} />
-            <VerticalBlock title="Contraintes / Résultats" block={selectedData.contraintes} />
+            {/* <VerticalBlock title="Mission" block={selectedData.mission} />
+            <VerticalBlock title="Contraintes / Résultats" block={selectedData.contraintes}/> */}
           </div>
 
           <div className="right-subblock bottom">
-            <VerticalBlock title="Langages & Frameworks" block={selectedData.languages} />
-            <VerticalBlock title="Datas" block={selectedData.data} />
-            <VerticalBlock title="Outils" block={selectedData.tools} />
-            <VerticalBlock title="Méthodologies" block={selectedData.methods} />
+            <VerticalBlock title="Langages & Frameworks" block={selectedData.languages} selectedTech={selectedTech} onSelectTech={setSelectedTech} />
+            {/* <VerticalBlock title="Datas" block={selectedData.data}/>
+            <VerticalBlock title="Outils" block={selectedData.tools}/>
+            <VerticalBlock title="Méthodologies" block={selectedData.methods}/> */}
           </div>
         </div>
       </div>
