@@ -5,6 +5,8 @@ import { BarChart, Bar, LabelList, XAxis, YAxis, Tooltip, ResponsiveContainer, P
 
 const CHART_COLOR = 'rgba(99, 102, 241, 0.75)';
 
+const isMobile = window.innerWidth < 800;
+
 const parseMetricValue = (value) => {
   // Si c'est déjà un nombre
   if (typeof value === 'number') return value;
@@ -77,7 +79,7 @@ const TechCard = ({ tech }) => {
       )}
 
       {metricsCount > 0 && (
-        <ResponsiveContainer width="100%" height={120}>
+        <ResponsiveContainer width="100%" height={isMobile ? 160 : 120}>
 
           {/* CAS 1 — Peu de valeurs → Pie */}
           {metricsCount <= 2 && (
