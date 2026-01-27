@@ -6,6 +6,7 @@ import Footer from '../components/Footer/footer';
 import Home from './pages/Home';
 import Experiences from './pages/Experiences';
 import Contact from './pages/Contact';
+import Passions from './pages/Passions';
 import './CV.css'
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/experiences" element={<Experiences />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/passions" element={<Passions />} />
         </Routes>
         <Footer />
       </div>

@@ -6,7 +6,8 @@ const HeaderTabs = () => {
   const tabs = [
     { label: 'Home', path: '/' },
     { label: 'Experiences', path: '/experiences' },
-    { label: 'Contact', path: '/contact' }
+    { label: 'Contact', path: '/contact' },
+    { label: 'Passion', path: '/passions' }
   ];
 
   const [theme, setTheme] = useState('light');
