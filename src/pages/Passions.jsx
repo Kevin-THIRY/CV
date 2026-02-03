@@ -13,22 +13,29 @@ const POI_SIZE = 40;
 const POIS = [
   {
     id: 1,
-    x: 120,
-    y: 90,
+    x: 442,
+    y: 230,
     title: "🤖 Robotique",
     description: "Automatisation, systèmes embarqués, vision industrielle."
   },
   {
     id: 2,
-    x: 360,
-    y: 70,
+    x: 415,
+    y: 400,
     title: "🎮 Jeux vidéo",
     description: "Souls-like, game design, création interactive."
   },
   {
     id: 3,
-    x: 260,
-    y: 220,
+    x: 240,
+    y: 300,
+    title: "🇯🇵 Japon",
+    description: "Langue, culture, rigueur, esthétique minimaliste."
+  },
+  {
+    id: 4,
+    x: 600,
+    y: 300,
     title: "🇯🇵 Japon",
     description: "Langue, culture, rigueur, esthétique minimaliste."
   }
@@ -39,16 +46,27 @@ export default function Passions() {
   const lastTimeRef = useRef(0);
 
   const playerRef = useRef({
-    x: 80,
-    y: 160,
-    targetX: 80,
-    targetY: 160
+    x: 450,
+    y: 300,
+    targetX: 450,
+    targetY: 300,
+
+    direction: "down",
+    moving: false,
+    walkPhase: 0
   });
 
-  const activePoiRef = useRef(null);
+  // const activePoiRef = useRef(null);
+  const [activePoi, setActivePoi] = useState(null);
 
   const mapImgRef = useRef(null);
   const playerImgRef = useRef(null);
+  const playerImgsRef = useRef({
+    up: null,
+    down: null,
+    left: null,
+    right: null
+  });
   const poiImgRef = useRef(null);
 
   useEffect(() => {
@@ -56,12 +74,25 @@ export default function Passions() {
     mapImg.src = "/asset/Game/map.png";
     mapImgRef.current = mapImg;
 
+    const load = (src) => {
+      const img = new Image();
+      img.src = src;
+      return img;
+    };
+
+    playerImgsRef.current = {
+      up: load("/asset/Game/player_up.png"),
+      down: load("/asset/Game/player_down.png"),
+      left: load("/asset/Game/player_left.png"),
+      right: load("/asset/Game/player_right.png")
+    };
+
     const playerImg = new Image();
     playerImg.src = "/asset/Game/player.png";
     playerImgRef.current = playerImg;
 
     const poiImg = new Image();
-    poiImg.src = "/asset/Game/poi.png";
+    poiImg.src = "";
     poiImgRef.current = poiImg;
   }, []);
 
@@ -94,11 +125,24 @@ export default function Passions() {
       const dist = Math.hypot(dx, dy);
 
       if (dist > 0.5) {
-        const vx = (dx / dist) * SPEED * dt;
-        const vy = (dy / dist) * SPEED * dt;
+        const nx = dx / dist;
+        const ny = dy / dist;
 
-        p.x += vx;
-        p.y += vy;
+        p.x += nx * SPEED * dt;
+        p.y += ny * SPEED * dt;
+
+        p.moving = true;
+
+        if (Math.abs(nx) > Math.abs(ny)) {
+          p.direction = nx > 0 ? "right" : "left";
+        } else {
+          p.direction = ny > 0 ? "down" : "up";
+        }
+
+        p.walkPhase += dt * 10;
+      } else {
+        p.moving = false;
+        p.walkPhase = 0;
       }
 
       draw(ctx);
@@ -119,7 +163,9 @@ export default function Passions() {
         return d < HIT_RADIUS;
       });
 
-      activePoiRef.current = hit || null;
+      setActivePoi(prev =>
+        hit?.id !== prev?.id ? hit || null : prev
+      );
     }, 100);
 
     return () => clearInterval(interval);
@@ -138,8 +184,6 @@ export default function Passions() {
     drawGrid(ctx);
     drawPois(ctx);
     drawPlayer(ctx);
-
-    drawPoiPanel(ctx, activePoiRef.current);
   };
 
   const drawGrid = (ctx) => {
@@ -160,8 +204,15 @@ export default function Passions() {
 
   const drawPlayer = (ctx) => {
     const p = playerRef.current;
-    if (playerImgRef.current && playerImgRef.current.complete && playerImgRef.current.naturalWidth > 0) {
-      ctx.drawImage(playerImgRef.current, p.x - PLAYER_SIZE / 2, p.y - PLAYER_SIZE / 2, PLAYER_SIZE, PLAYER_SIZE);
+    const img = playerImgsRef.current[p.direction];
+
+    if (!img || !img.complete) return;
+
+    const bob = p.moving ? Math.sin(p.walkPhase) * 3 : 0;
+
+    if (playerImgsRef.current[p.direction] && playerImgsRef.current[p.direction].complete && playerImgsRef.current[p.direction].naturalWidth > 0) {
+      drawShadow(ctx, p);
+      ctx.drawImage(img, p.x - PLAYER_SIZE / 2, p.y - PLAYER_SIZE / 2 + bob, PLAYER_SIZE, PLAYER_SIZE);
     } else {
       ctx.fillStyle = "#6366f1";
       ctx.beginPath();
@@ -170,12 +221,19 @@ export default function Passions() {
     }
   };
 
+  const drawShadow = (ctx, p) => {
+    ctx.fillStyle = "rgba(0,0,0,0.35)";
+    ctx.beginPath();
+    ctx.ellipse(p.x, p.y + PLAYER_SIZE / 2 - 25, 18, 6, 0, 0, Math.PI * 2);
+    ctx.fill();
+  };
+
   const drawPois = (ctx) => {
     POIS.forEach(poi => {
       if (poiImgRef.current && poiImgRef.current.complete && poiImgRef.current.naturalWidth > 0) {
         ctx.drawImage(poiImgRef.current, poi.x - POI_SIZE / 2, poi.y - POI_SIZE / 2, POI_SIZE, POI_SIZE);
       } else {
-        ctx.fillStyle = "rgba(0, 0, 0, 0.8)";
+        ctx.fillStyle = "rgba(0, 0, 0, 0)";
         ctx.beginPath();
         ctx.arc(poi.x, poi.y, 6, 0, Math.PI * 2);
         ctx.fill();
@@ -183,33 +241,15 @@ export default function Passions() {
     });
   };
 
-  const drawPoiPanel = (ctx, poi) => {
-    if (!poi) return;
+  const getScreenPosition = (poi) => {
+    if (!canvasRef.current) return null;
 
-    const panelWidth = 140;
-    const panelHeight = 50;
-    const padding = 6;
+    const rect = canvasRef.current.getBoundingClientRect();
 
-    // Position du panneau au-dessus du POI
-    const x = poi.x - panelWidth / 2;
-    const y = poi.y - panelHeight - 12;
-
-    // Fond du panneau
-    ctx.fillStyle = "rgba(0,0,0,0.7)";
-    ctx.fillRect(x, y, panelWidth, panelHeight);
-
-    // Bord arrondi pixelisé
-    ctx.strokeStyle = "#22c55e";
-    ctx.lineWidth = 2;
-    ctx.strokeRect(x, y, panelWidth, panelHeight);
-
-    // Texte
-    ctx.fillStyle = "#fff";
-    ctx.font = "12px sans-serif";
-    ctx.textAlign = "center";
-    ctx.textBaseline = "top";
-    ctx.fillText(poi.title, x + panelWidth / 2, y + padding);
-    ctx.fillText(poi.description, x + panelWidth / 2, y + padding + 16);
+    return {
+      left: rect.left + (poi.x / WIDTH) * rect.width,
+      top: rect.top + (poi.y / HEIGHT) * rect.height
+    };
   };
 
   return (
@@ -220,6 +260,23 @@ export default function Passions() {
         height={HEIGHT}
         onClick={handleClick}
       />
+      {activePoi && (() => {
+        const pos = getScreenPosition(activePoi);
+        if (!pos) return null;
+
+        return (
+          <div
+            className="poi-ui"
+            style={{
+              left: pos.left,
+              top: pos.top
+            }}
+          >
+            <span className="poi-title">{activePoi.title}</span>
+            <span className="poi-desc">{activePoi.description}</span>
+          </div>
+        );
+      })()}
 
       <div className="hint">
         Clique pour te déplacer. Approche un point.

@@ -38,6 +38,70 @@ canvas {
   opacity: 0.85;
 }
 
+.poi-ui {
+  position: fixed;
+  transform: translate(-50%, -120%);
+  pointer-events: none;
+
+  min-width: 240px;
+  padding: 14px 16px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(15, 23, 42, 0.92),
+      rgba(2, 6, 23, 0.92)
+    );
+
+  border-radius: 16px;
+  border: 1px solid rgba(34, 197, 94, 0.35);
+
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.6),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+
+  backdrop-filter: blur(12px);
+  animation: poi-in 0.25s cubic-bezier(.2,.8,.2,1);
+}
+
+.poi-title {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #22c55e;
+}
+
+.poi-desc {
+  display: block;
+  margin-top: 6px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: #e5e7eb;
+}
+
+.poi-ui::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 8px 6px 0;
+  border-style: solid;
+  border-color: rgba(2, 6, 23, 0.92) transparent transparent;
+}
+
+@keyframes poi-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -110%) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -120%) scale(1);
+  }
+}
+
+
 .hint {
   font-size: 0.7rem;
   opacity: 0.5;
