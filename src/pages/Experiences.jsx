@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import './Experiences.css';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BarChart, Bar, LabelList, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie } from 'recharts';
+import { useScroll, useTransform, useMotionTemplate } from "framer-motion";
 
 const CHART_COLOR = 'rgba(99, 102, 241, 0.75)';
 
@@ -169,6 +170,11 @@ const VerticalBlock = ({ title, block, selectedTech, onSelectTech }) => {
               </p>
             );
           })}
+          {block.media && block.media.map((m, i) => (
+            m.type === 'img' 
+              ? <img key={i} src={m.src} alt={m.alt} /> 
+              : <video key={i} src={m.src} autoPlay loop muted />
+          ))}
         </div>
       )}
 
@@ -218,18 +224,78 @@ const Experiences = () => {
       contexte: {
         type: 'bullets-inline',
         items: [
-          'Conception d’un *jeu vidéo 3D* sous Unity, dans le cadre d’un projet personnel de 4 mois. ~Mené en totale autonomie~, ce projet m’a permis de toucher à toutes les étapes de production : du code à l’intégration des assets.',
-          'L’objectif principal était de maîtriser l’ensemble de la chaîne de production d’un jeu temps réel : conception du gameplay, structuration d’une architecture logicielle scalable et maintenable, et optimisation des performances pour un ciblage PC (FPS, mémoire).',
-          'Le développement s’est fait sur une période prolongée avec *itérations successives*, permettant d’améliorer progressivement les mécaniques de jeu et la stabilité globale.',
-          'Développement solo → charge complète : programmation C# (.NET), design 3D, intégration d’assets, et tests continus pour assurer fluidité et stabilité en runtime.',
-          'Contraintes techniques : limites du moteur Unity (GC, gestion des scènes, physics), optimisation des assets pour éviter des surcoûts GPU et maintien de la maintenabilité malgré la croissance du nombre de scripts (~50+ scripts gérés~).',
-          'Résultat : un jeu jouable de bout en bout, avec *mécaniques de gameplay centrales* implémentées, assets 3D intégrés, et pipeline Python pour le traitement automatisé des assets et tests qualité. *Performance observée : -40% faux positifs sur les tests automatisés, cadence 1 moteur / 12s*.'
+          'Développement d’un *jeu vidéo isométrique* en C# (.NET) sous Unity, type Age of Empires / The Age of Kings, avec ~vue orthographique~ et tour par tour.',
+          '8 civilisations jouables : Francs, Angleterre, Saint-Empire Romain Germanique, Principauté de Kiev, Shogunat du Japon, Khanat Monghol, Califat Abbasside, Empire Byzantin.',
+          'Gestion de *73 unités par civilisation* avec rôles spécifiques et interactions (ex. : lanceur vs cavalier, archers, héros avec pouvoirs spéciaux).',
+          'Système de progression avec *30 technologies* réparties sur 6 âges, influençant gameplay et stratégie.',
+          'Gestion complète de l’*économie et des ressources* : or, bois, pierre, nourriture, avec conversion et allocation pour unités et bâtiments.',
+          'Implémentation de la partie réseau multi-joueur : synchronisation des tours, matchmaking et latence optimisée (~50ms).',
+          'Projet mené en *totale autonomie* : conception, programmation, design 3D, intégration des assets, tests et optimisation sur 4 mois.'
+        ],
+        media: [
+          { type: 'img', src: '/asset/jeu_video_iso.png', alt: 'Vue isométrique du jeu' },
+          { type: 'gif', src: '/asset/jeu_video_demo.gif', alt: 'Gameplay démo' }
         ]
       },
       languages: {
         type: 'tags',
         items: [
-
+          {
+            section: 'Gameplay',
+            label: 'Civilisations & Unités',
+            icon: '',
+            description: 'Chiffres clés du gameplay',
+            metrics: {
+              totalCivilisations: 8,
+              totalUnitTypes: 73,
+              heroes: 16,
+              specialAbilities: 12
+            }
+          },
+          {
+            section: 'Technologies',
+            label: 'Recherche & Âges',
+            icon: '',
+            description: 'Technologies et progression',
+            metrics: {
+              totalTechnologies: 30,
+              ages: 6,
+              avgTechPerAge: 5
+            }
+          },
+          {
+            section: 'Économie & Ressources',
+            label: 'Gestion économique',
+            icon: '',
+            description: 'Ressources et flux',
+            metrics: {
+              typesDeRessources: 4,
+              maxRessourcesParType: 5000,
+              maxGoldFlowPerTurn: 1000
+            }
+          },
+          {
+            section: 'Combat & Stratégie',
+            label: 'Rôles et interactions',
+            icon: '',
+            description: 'Combat et rôles unitaires',
+            metrics: {
+              typesUnites: 73,
+              specialRoles: 5,
+              heroAbilities: 12
+            }
+          },
+          {
+            section: 'Réseau & Multijoueur',
+            label: 'Online gameplay',
+            icon: '',
+            description: 'Multijoueur et latence',
+            metrics: {
+              maxPlayers: 8,
+              latencyMs: 50,
+              maxConcurrentGames: 3
+            }
+          },
           // 🥧 PIE — peu de métriques (focus stabilité / perf)
           {
             section: 'Langage',
@@ -886,7 +952,7 @@ const Experiences = () => {
   const [selectedKey, setSelectedKey] = useState('projetJeuVideo');
   const [selectedTech, setSelectedTech] = useState(null);
   const selectedData = DATA[selectedKey];
-  const backgroundStyle = selectedData?.background ? { backgroundImage: `url(${selectedData.background})` } : {};
+  // const backgroundStyle = selectedData?.background ? { backgroundImage: `url(${selectedData.background})` } : {};
 
   const scrollToRef = (ref, duration = 500) => {
     if (!ref.current) return;
@@ -919,118 +985,139 @@ const Experiences = () => {
   useEffect(() => {
     setSelectedTech(null);
   }, [selectedKey]);
+
+  const { scrollY } = useScroll();
+
+  const fadeDistance = 450; // scroll court
+
+  const opacity = useTransform(scrollY, [0, fadeDistance], [1, 0.8]);
+  const blur = useMotionTemplate`blur(${useTransform(scrollY, [0, fadeDistance], [0, 1])}px)`;
+  const scale = useTransform(scrollY, [0, fadeDistance], [1, 1.1]);
   
   return (
-    <div className="experiences-wrapper" style={backgroundStyle}>
-      <div className="second-page-container">
-        <div className="block-left">
-          <div className="sub-block-top">
-            <img src="/asset/Exp_pro.png" alt="Illustration" className="sub-block-top-image" />
-            <div className="sub-block-top-text">
-              <h3>Expériences profesionnels et projet personnel</h3>
-            </div>
-          </div>
-          <div className="sub-block-bottom">
-            <div className="timeline">
-              <div className="timeline-item">
-                <span className="timeline-point"></span>
-                <div className="timeline-content" onClick={() => setSelectedKey('projetJeuVideo')}>
-                  <img src="/asset/unity_logo.png" alt="Illustration"/>
-                  <div className="timeline-content-text">
-                    <h4>Projet Personnel - 4 mois</h4>
-                    <p>Septembre 2025 - Decembre 2025</p>
-                  </div>
-                </div>
-              </div>
-              <div className="timeline-item">
-                <span className="timeline-point"></span>
-                <div className="timeline-content" onClick={() => setSelectedKey('ABB')}>
-                  <img src="/asset/abb-logo.png" alt="Illustration"/>
-                  <div className="timeline-content-text">
-                    <h4>ABB - 2 mois</h4>
-                    <p>Juillet 2025 - Aout 2025</p>
-                  </div>
-                </div>
-              </div>
-              <div className="timeline-item">
-                <span className="timeline-point"></span>
-                <div className="timeline-content" onClick={() => setSelectedKey('Actemium')}>
-                  <img src="/asset/logo-actemium.jpg" alt="Illustration"/>
-                  <div className="timeline-content-text">
-                    <h4>Actemium Lyon Logistics - VINCI ENERGIES - 1 an</h4>
-                    <p>Juin 2024 - Juin 2025</p>
-                  </div>
-                </div>
-              </div>
-              <div className="timeline-item">
-                <span className="timeline-point"></span>
-                <div className="timeline-content" onClick={() => setSelectedKey('SaintGobain')}>
-                  <img src="/asset/saint_gobain_logo.png" alt="Illustration"/>
-                  <div className="timeline-content-text">
-                    <h4>Saint-Gobain - 1 mois</h4>
-                    <p>Mai 2024</p>
-                  </div>
-                </div>
-              </div>
-              <div className="timeline-item">
-                <span className="timeline-point"></span>
-                <div className="timeline-content" onClick={() => setSelectedKey('TDF')}>
-                  <img src="/asset/grand_lyon_logo.png" alt="Illustration"/>
-                  <div className="timeline-content-text">
-                    <h4>TDF – Tunnels de Fourvière - 1 mois</h4>
-                    <p>Avril 2024</p>
-                  </div>
-                </div>
-              </div>
-              <div className="timeline-item">
-                <span className="timeline-point"></span>
-                <div className="timeline-content" onClick={() => setSelectedKey('Resonnance')}>
-                  <img src="/asset/Resonance.png" alt="Illustration"/>
-                  <div className="timeline-content-text">
-                    <h4>RESONANCE – Groupe FIRALP - 1 mois</h4>
-                    <p>Mars 2024</p>
-                  </div>
-                </div>
-              </div>
-              <div className="timeline-item">
-                <span className="timeline-point"></span>
-                <div className="timeline-content" onClick={() => setSelectedKey('Volvo_data_science')}>
-                  <img src="/asset/volvo_trucks_logo.jpg" alt="Illustration"/>
-                  <div className="timeline-content-text">
-                    <h4>Ingénieur Data Scientist – Volvo Trucks - 4 mois</h4>
-                    <p>Septembre 2023 - Decembre 2023</p>
-                  </div>
-                </div>
-              </div>
-              <div className="timeline-item">
-                <span className="timeline-point"></span>
-                <div className="timeline-content" onClick={() => setSelectedKey('Volvo_robotics')}>
-                  <img src="/asset/volvo_trucks_logo.jpg" alt="Illustration"/>
-                  <div className="timeline-content-text">
-                    <h4>Ingénieur Robotique – Volvo Trucks - 1 an</h4>
-                    <p>Aout 2022 - Aout 2023</p>
-                  </div>
-                </div>
+    // style={backgroundStyle}
+    <>
+      <motion.div className="background-layer" style={{ backgroundImage: `url(${selectedData.background})`,
+                                                        opacity,
+                                                        scale,
+                                                        filter: blur
+                                                      }}
+      />
+      <motion.div
+        className="background-overlay"
+        style={{ opacity: useTransform(scrollY, [0, fadeDistance], [0.2, 0.9]) }}
+      />
+      <div className="experiences-wrapper">
+        <div className="second-page-container">
+          <div className="block-left">
+            <div className="sub-block-top">
+              <img src="/asset/Exp_pro.png" alt="Illustration" className="sub-block-top-image" />
+              <div className="sub-block-top-text">
+                <h3>Expériences profesionnels et projet personnel</h3>
               </div>
             </div>
+            <div className="sub-block-bottom">
+              <div className="timeline">
+                <div className="timeline-item">
+                  <span className="timeline-point"></span>
+                  <div className="timeline-content" onClick={() => setSelectedKey('projetJeuVideo')}>
+                    <img src="/asset/unity_logo.png" alt="Illustration"/>
+                    <div className="timeline-content-text">
+                      <h4>Projet Personnel - 4 mois</h4>
+                      <p>Septembre 2025 - Decembre 2025</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="timeline-item">
+                  <span className="timeline-point"></span>
+                  <div className="timeline-content" onClick={() => setSelectedKey('ABB')}>
+                    <img src="/asset/abb-logo.png" alt="Illustration"/>
+                    <div className="timeline-content-text">
+                      <h4>ABB - 2 mois</h4>
+                      <p>Juillet 2025 - Aout 2025</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="timeline-item">
+                  <span className="timeline-point"></span>
+                  <div className="timeline-content" onClick={() => setSelectedKey('Actemium')}>
+                    <img src="/asset/logo-actemium.jpg" alt="Illustration"/>
+                    <div className="timeline-content-text">
+                      <h4>Actemium Lyon Logistics - VINCI ENERGIES - 1 an</h4>
+                      <p>Juin 2024 - Juin 2025</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="timeline-item">
+                  <span className="timeline-point"></span>
+                  <div className="timeline-content" onClick={() => setSelectedKey('SaintGobain')}>
+                    <img src="/asset/saint_gobain_logo.png" alt="Illustration"/>
+                    <div className="timeline-content-text">
+                      <h4>Saint-Gobain - 1 mois</h4>
+                      <p>Mai 2024</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="timeline-item">
+                  <span className="timeline-point"></span>
+                  <div className="timeline-content" onClick={() => setSelectedKey('TDF')}>
+                    <img src="/asset/grand_lyon_logo.png" alt="Illustration"/>
+                    <div className="timeline-content-text">
+                      <h4>TDF – Tunnels de Fourvière - 1 mois</h4>
+                      <p>Avril 2024</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="timeline-item">
+                  <span className="timeline-point"></span>
+                  <div className="timeline-content" onClick={() => setSelectedKey('Resonnance')}>
+                    <img src="/asset/Resonance.png" alt="Illustration"/>
+                    <div className="timeline-content-text">
+                      <h4>RESONANCE – Groupe FIRALP - 1 mois</h4>
+                      <p>Mars 2024</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="timeline-item">
+                  <span className="timeline-point"></span>
+                  <div className="timeline-content" onClick={() => setSelectedKey('Volvo_data_science')}>
+                    <img src="/asset/volvo_trucks_logo.jpg" alt="Illustration"/>
+                    <div className="timeline-content-text">
+                      <h4>Ingénieur Data Scientist – Volvo Trucks - 4 mois</h4>
+                      <p>Septembre 2023 - Decembre 2023</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="timeline-item">
+                  <span className="timeline-point"></span>
+                  <div className="timeline-content" onClick={() => setSelectedKey('Volvo_robotics')}>
+                    <img src="/asset/volvo_trucks_logo.jpg" alt="Illustration"/>
+                    <div className="timeline-content-text">
+                      <h4>Ingénieur Robotique – Volvo Trucks - 1 an</h4>
+                      <p>Aout 2022 - Aout 2023</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div className="block-right" ref={rightContainerRef}>
-          <div className="right-subblock top">
-            <VerticalBlock title="Contexte" block={selectedData.contexte} />
-            {/* <VerticalBlock title="Mission" block={selectedData.mission} />
-            <VerticalBlock title="Contraintes / Résultats" block={selectedData.contraintes}/> */}
-          </div>
+          <div className="block-right" ref={rightContainerRef}>
+            <div className="right-subblock top">
+              <VerticalBlock title="Contexte" block={selectedData.contexte} />
+              {/* <VerticalBlock title="Mission" block={selectedData.mission} />
+              <VerticalBlock title="Contraintes / Résultats" block={selectedData.contraintes}/> */}
+            </div>
 
-          <div className="right-subblock bottom">
-            <VerticalBlock title="Langages & Frameworks" block={selectedData.languages} selectedTech={selectedTech} onSelectTech={setSelectedTech} />
-            {/* <VerticalBlock title="Datas" block={selectedData.data}/>
-            <VerticalBlock title="Outils" block={selectedData.tools}/>
-            <VerticalBlock title="Méthodologies" block={selectedData.methods}/> */}
+            <div className="right-subblock bottom">
+              <VerticalBlock title="Langages & Frameworks" block={selectedData.languages} selectedTech={selectedTech} onSelectTech={setSelectedTech} />
+              {/* <VerticalBlock title="Datas" block={selectedData.data}/>
+              <VerticalBlock title="Outils" block={selectedData.tools}/>
+              <VerticalBlock title="Méthodologies" block={selectedData.methods}/> */}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
